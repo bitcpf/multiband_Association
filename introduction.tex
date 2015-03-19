@@ -1,0 +1,88 @@
+\section{Introduction}
+\label{sec:introduction}
+
+%  Multiband background
+The FCC has approved the use of broadband services in the white spaces of 
+UHF TV bands, which were formerly exclusively licensed to television broadcasters.
+These white space bands are now available for unlicensed public use, enabling the
+deployment of wireless access networks. These white space bands operate in available 
+channels from 54-806 MHz, having a far greater propagation range than WiFi bands for 
+similar transmission power~\cite{balanis2012antenna}. 
+% Improve existing cells
+Thus, white space bands could greatly complement the existing WiFi wireless network with 
+a large area. The users in the propagation range of the access point with white space radios 
+has the options to associate with either the WiFi channel of its cell or the white space 
+channel.
+
+
+
+% Multi-user diersity
+The users in multiple locations under the coverage of both the WiFi and white space have {\it user 
+diversity}. The term user diversity represents the same frequency band at the same time can offer 
+different transmission qualities to different users due to their difference in transceiver design, 
+geographic location, etc.
+% Explain the spectral diversity temporal diversity
+The user diversity comes from two types of diversity gains. One is the temporal diversity which 
+is caused by the environment variation. Another is the spectral diversity which represents the 
+transmission conditions varies across channels. 
+In some moderate number of users, the sum capacity of the fading channel is greater than 
+the sum capacity of a nonfading channel. In the fading channels, the sum capacity of users 
+increase with the number of users in the system~\cite{viswanath2002opportunistic,gan2014multiple}. 
+
+
+% White space limited resource
+%Moreover, the number of available white space channels are restricted by FCC. In sparse rural area,
+%there are more free channels in white space. Inversely, few available channels are located in dense 
+%populated area. The question {\it how limited white space resource befinet the access of the users 
+%in these diversity scenarios?}
+
+Previous work studied the multi user setting with a single channel~\cite{tan2010distributed}. Spectral diversity 
+is isolated for a single user in~\cite{shu2009throughput}. In~\cite{liu2013stay}, multi-user dynamic channel access is 
+proposed jointly consider the temporal and spectral diversity in a multichannel model. However, 
+none of these works address the channel association problem in multiband scenario.
+
+The larger propagation range of white space channels adapt channel association of users located 
+in large area through time division. When the users distributed in a large area, the temporal 
+diversity and spectral diversity become the key issues of white space applications.
+Previous work~\cite{pcuiwinmee} studied the white space application in access network deployment 
+with spectral diversity. However, these works fails to leverage the white space frequency in 
+multi-user diversity in both spectral and temporal scenarios.
+
+% Extreme cases and the middle
+In sparse rural areas, plenty of white space channels are able to deploy new white space network. However, 
+in dense area, few white space channels are available for new network deployment, such as none white 
+space channel is available in New York downtown~\cite{googlespectrum}. The carrier have to use WiFi 
+channels to deploy wireless networks in the dense area without any available white space channel. 
+Other than these two extreme cases, most areas of major cities in the United States have one to eight 
+white space channels~\cite{googlespectrum}. Exploiting these limited white space resource to improve 
+the WiFi network in dense area is a perspective option for the dense areas.
+
+% Power saving, extreme cases
+The white space frequencies offer more wireless capacity and conienience of access across large 
+area. When the traffic demands of the users are relatively low, a single white space channels satisfy 
+all the user. Then, the WiFi radios could be turned off for saving power. On the other side, 
+when the users have high traffic demand, all the radios, WiFi and white space, have to be operated to serve the users. 
+However, traffic demands generally come across somewhere between these extremes.
+Thus, the question comes out,a{\it in what degree the white space help to reduce the power consumptions of 
+an existing WiFi mesh?} 
+
+% Traffic Demand
+In this work, we study channel schedule in a multi-user multiband setting, where users are not 
+fully backlogged, traffic demand follow a certain arrival process. We focus on the effect of channel 
+schedule of each user between the WiFi or white space band. 
+
+% On demand consideration
+
+% Paper contributions
+In particular, the main contributions of our work are as follows:
+%\begin{itemize}
+%\item We perform the in-field measurements of user diversity in various representative scenarios 
+%across the DFW metroplex.
+%\item We formulate the channel association problem in multiband scenario.We develop a fixme
+%algorithm to associate the users to the access points approaching the optimal effective rate.
+%\item We design a payoff function to improve the fairness among the users and the quanlity of service.
+%\item We analyze our algorithm with our in-field measurements to show that white space band 
+%could improve 
+%\end{itemize}
+%
+%The rest of the paper 

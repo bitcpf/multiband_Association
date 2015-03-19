@@ -1,0 +1,79 @@
+\begin{thebibliography}{10}
+\providecommand{\url}[1]{#1}
+\def\UrlFont{\rmfamily}
+\providecommand{\newblock}{\relax}
+\providecommand{\bibinfo}[2]{#2}
+\providecommand\BIBentrySTDinterwordspacing{\spaceskip=0pt\relax}
+\providecommand\BIBentryALTinterwordstretchfactor{4}
+\providecommand\BIBentryALTinterwordspacing{\spaceskip=\fontdimen2\font plus
+\BIBentryALTinterwordstretchfactor\fontdimen3\font minus
+  \fontdimen4\font\relax}
+\providecommand\BIBforeignlanguage[2]{{%
+\expandafter\ifx\csname l@#1\endcsname\relax
+\typeout{** WARNING: IEEEtran.bst: No hyphenation pattern has been}%
+\typeout{** loaded for the language `#1'. Using the pattern for}%
+\typeout{** the default language instead.}%
+\else
+\language=\csname l@#1\endcsname
+\fi
+#2}}
+
+\bibitem{balanis2012antenna}
+C.~A. Balanis, \emph{Antenna theory: analysis and design}.\hskip 1em plus 0.5em
+  minus 0.4em\relax John Wiley \& Sons, 2012.
+
+\bibitem{viswanath2002opportunistic}
+P.~Viswanath, D.~N.~C. Tse, and R.~Laroia, ``Opportunistic beamforming using
+  dumb antennas,'' \emph{Information Theory, IEEE Transactions on}, vol.~48,
+  no.~6, pp. 1277--1294, 2002.
+
+\bibitem{gan2014multiple}
+Y.~Gan and Y.~Wu, ``Multiple rayleigh fading channels modeling based on
+  sum-of-sinusoids model,'' \emph{International Journal of Communication
+  Systems}, vol.~27, no.~11, pp. 2997--3012, 2014.
+
+\bibitem{tan2010distributed}
+S.-S. Tan, D.~Zheng, J.~Zhang, and J.~Zeidler, ``Distributed opportunistic
+  scheduling for ad-hoc communications under delay constraints,'' in
+  \emph{Proceedings of the 29th conference on Information
+  communications}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE Press, 2010, pp.
+  2874--2882.
+
+\bibitem{shu2009throughput}
+T.~Shu and M.~Krunz, ``Throughput-efficient sequential channel sensing and
+  probing in cognitive radio networks under sensing errors,'' in
+  \emph{Proceedings of the 15th annual international conference on Mobile
+  computing and networking}.\hskip 1em plus 0.5em minus 0.4em\relax ACM, 2009,
+  pp. 37--48.
+
+\bibitem{liu2013stay}
+Y.~Liu and M.~Liu, ``To stay or to switch: Multiuser dynamic channel access,''
+  in \emph{INFOCOM, 2013 Proceedings IEEE}.\hskip 1em plus 0.5em minus
+  0.4em\relax IEEE, 2013, pp. 1249--1257.
+
+\bibitem{pcuiwinmee}
+D.~R. Pengfei~Cui, Hui~Liu and J.~Camp, ``A measurement study of white spaces
+  across diverse population densities,'' \emph{IEEE 10th WiNMeE}, 2014.
+
+\bibitem{googlespectrum}
+Google, ``Spectrum database,''
+  \url{http://www.google.org/spectrum/whitespace/}, 2013.
+
+\bibitem{andersen1995propagation}
+J.~B. Andersen, T.~S. Rappaport, and S.~Yoshida, ``Propagation measurements and
+  models for wireless communications channels,'' \emph{{IEEE Communications
+  Magazine}}, vol.~33, no.~1, pp. 42--49, 1995.
+
+\bibitem{friis}
+H.~T. Friis, ``A note on a simple transmission formula,'' vol.~34, no.~5, pp.
+  254--256, May 1946.
+
+\bibitem{rappaport}
+T.~Rappaport, \emph{Wireless Communications, Principles \& Practice}.\hskip 1em
+  plus 0.5em minus 0.4em\relax Prentice Hall, 1996.
+
+\bibitem{niida2010user}
+S.~Niida, S.~Uemura, and H.~Nakamura, ``User tolerance for waiting time,''
+  \emph{IEEE Vehicular Technology Magazine}, vol.~5, no.~3, pp. 61--67, 2010.
+
+\end{thebibliography}
