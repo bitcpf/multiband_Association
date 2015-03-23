@@ -247,8 +247,8 @@ users in the system.
 When the total traffic demand of the users are small, one radio in white space could achieve the 
 requirements of the users. However, as the total traffic demand increase with the number of users 
 or the demand per user, we need to the find the feasibility of the system first. 
-The minimize number of operating radios has to fulfill the maximize capacity of each user greater than 
-the remaining buffer and the new coming data as shown in Eq.~\ref{eq:capacity}
+The minimize number of operating radios has to fufill the maximize capacity of each user greater than 
+the remaining buffer and the new caming data as shwon in Eq.~\ref{eq:capacity}
 \begin{equation}
 \label{eq:capacity}
 \sum\limits_{j=1}^{F_m+F_b}H_{ij}(T)\ge Q_i(T) ,\ i\in N

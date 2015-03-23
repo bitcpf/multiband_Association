@@ -3,9 +3,9 @@
 
 
 % White Space
-Since white space bands were free for wireless communication, many efforts have been 
+Since white space bands were free for wireless communication, many effors have been 
 put in the area for the application of white space bands.~\cite{fccwhitespace} 
-In~\cite{bahl2009white}. the author considered a cognitive method to avoid collision 
+In~\cite{bahl2009white}. the author considered a congnitive method to avoid collision 
 between white space communication and TV broadcasting. 
 Many works increasing the convenience of using white space databases have been published 
 (e.g., Microsoft's White Space Database~\cite{msdatabase}).
@@ -34,7 +34,7 @@ Previous works in real time systems put many efforts to minimize the resources, 
 In~\cite{li2014analysis}, the author proves the capacity augmentation bounds for schedulers of parallel tasks. 
 However, these works assume the parallel tasks have uniform servers. 
 In contrast, we study the performance gains of white space channel in varying channel states for 
-a existing mesh networks in power consumption and resource requirement. 
+a existing mesh networks in power consumption and resource reqirement. 
 
 % gan2014multiple
 

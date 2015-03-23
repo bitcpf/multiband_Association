@@ -76,4 +76,47 @@ T.~Rappaport, \emph{Wireless Communications, Principles \& Practice}.\hskip 1em
 S.~Niida, S.~Uemura, and H.~Nakamura, ``User tolerance for waiting time,''
   \emph{IEEE Vehicular Technology Magazine}, vol.~5, no.~3, pp. 61--67, 2010.
 
+\bibitem{fccwhitespace}
+``Fcc white space,'' \url{http://www.fcc.gov/topic/white-space}, 2012.
+
+\bibitem{bahl2009white}
+P.~Bahl, R.~Chandra, T.~Moscibroda, R.~Murty, and M.~Welsh, ``White space
+  networking with {WiFi} like connectivity,'' \emph{{ACM SIGCOMM}}, vol.~39,
+  no.~4, pp. 27--38, 2009.
+
+\bibitem{msdatabase}
+``Microsoft research white space database,''
+  \url{http://whitespaces.cloudapp.net/Default.aspx}, 2013.
+
+\bibitem{googledatabase}
+``Google spectrum database,'' \url{http://goo.gl/NnIFXQ}, 2013.
+
+\bibitem{cui2013leveraging}
+P.~Cui, H.~Liu, J.~He, O.~Altintas, R.~Vuyyuru, D.~Rajan, and J.~Camp,
+  ``Leveraging diverse propagation and context for multi-modal vehicular
+  applications,'' in \emph{{IEEE WiVeC}}, 2013.
+
+\bibitem{bodas2012low}
+S.~Bodas, S.~Shakkottai, L.~Ying, and R.~Srikant, ``Low-complexity scheduling
+  algorithms for multichannel downlink wireless networks,'' \emph{Networking,
+  IEEE/ACM Transactions on}, vol.~20, no.~5, pp. 1608--1621, 2012.
+
+\bibitem{ji2013performance}
+B.~Ji, G.~R. Gupta, X.~Lin, and N.~B. Shroff, ``Performance of low-complexity
+  greedy scheduling policies in multi-channel wireless networks: Optimal
+  throughput and near-optimal delay,'' in \emph{INFOCOM, 2013 Proceedings
+  IEEE}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 2013, pp. 2589--2597.
+
+\bibitem{nelissen2012techniques}
+G.~Nelissen, V.~Berten, J.~Goossens, and D.~Milojevic, ``Techniques optimizing
+  the number of processors to schedule multi-threaded tasks,'' in
+  \emph{Real-Time Systems (ECRTS), 2012 24th Euromicro Conference on}.\hskip
+  1em plus 0.5em minus 0.4em\relax IEEE, 2012, pp. 321--330.
+
+\bibitem{li2014analysis}
+J.~Li, J.~J. Chen, K.~Agrawal, C.~Lu, C.~Gill, and A.~Saifullah, ``Analysis of
+  federated and global scheduling for parallel real-time tasks,'' in
+  \emph{Real-Time Systems (ECRTS), 2014 26th Euromicro Conference on}.\hskip
+  1em plus 0.5em minus 0.4em\relax IEEE, 2014, pp. 85--96.
+
 \end{thebibliography}

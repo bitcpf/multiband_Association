@@ -58,7 +58,7 @@ white space channels~\cite{googlespectrum}. Exploiting these limited white space
 the WiFi network in dense area is a perspective option for the dense areas.
 
 % Power saving, extreme cases
-The white space frequencies offer more wireless capacity and convenience of access across large 
+The white space frequencies offer more wireless capacity and conienience of access across large 
 area. When the traffic demands of the users are relatively low, a single white space channels satisfy 
 all the user. Then, the WiFi radios could be turned off for saving power. On the other side, 
 when the users have high traffic demand, all the radios, WiFi and white space, have to be operated to serve the users. 

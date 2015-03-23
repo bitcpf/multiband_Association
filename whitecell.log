@@ -1,4 +1,4 @@
-This is pdfeTeX, Version 3.141592-1.21a-2.2 (Web2C 7.5.4) (format=latex 2012.4.6)  19 MAR 2015 18:04
+This is pdfeTeX, Version 3.141592-1.21a-2.2 (Web2C 7.5.4) (format=latex 2012.4.6)  22 MAR 2015 18:24
 entering extended mode
 **whitecell
 (./whitecell.tex
@@ -363,32 +363,35 @@ LaTeX Font Info:    Font shape `U/lasy/b/n' in size <8> not available
 (Font)              Font shape `U/lasy/m/n' tried instead on input line 4.
 LaTeX Font Info:    Font shape `U/lasy/b/n' in size <6> not available
 (Font)              Font shape `U/lasy/m/n' tried instead on input line 4.
+
+Overfull \hbox (10.7981pt too wide) in paragraph at lines 4--30
+ [] 
+ []
+
 )
 File: figures/flowconfig.eps Graphic file (type eps)
  <figures/flowconfig.eps>
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 141.
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 158.
 
-
-(/usr/share/texmf/tex/latex/psnfss/omsptm.fd
+ (/usr/share/texmf/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 141.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 158.
 
-Overfull \hbox (55.29134pt too wide) detected at line 151
-\OML/cmm/m/it/10 A[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t\OT1/cmr/m/n/10 ) = []
- []
+[2]) (./related.tex
 
+LaTeX Warning: Citation `liu2014energy' on page 3 undefined on input line 26.
 
-Overfull \hbox (53.35013pt too wide) detected at line 176
-\OML/cmm/m/it/10 ^^M[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t\OT1/cmr/m/n/10 ) = []
-
- []
-
-[2]) (./whitecell.bbl
+) (./whitecell.bbl
 Overfull \hbox (9.91747pt too wide) in paragraph at lines 59--61
 []\OT1/ptm/m/n/8 Google, ``Spec-trum database,'' http://www.google.org/spectrum
 /whitespace/,
+ []
+
+[3]
+Underfull \hbox (badness 10000) in paragraph at lines 88--90
+[]\OT1/ptm/m/n/8 ``Microsoft re-search white space database,''
  []
 
 )
@@ -403,16 +406,20 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[3
+[4
 
-] (./whitecell.aux) ) 
+] (./whitecell.aux)
+
+LaTeX Warning: There were undefined references.
+
+ ) 
 Here is how much of TeX's memory you used:
- 3030 strings out of 94501
- 41295 string characters out of 1176790
- 94234 words of memory out of 1000000
- 6114 multiletter control sequences out of 10000+50000
+ 3046 strings out of 94501
+ 41540 string characters out of 1176790
+ 95234 words of memory out of 1000000
+ 6127 multiletter control sequences out of 10000+50000
  36052 words of font info for 97 fonts, out of 500000 for 2000
  580 hyphenation exceptions out of 1000
  27i,9n,24p,277b,320s stack positions out of 1500i,500n,5000p,200000b,5000s
 
-Output written on whitecell.dvi (3 pages, 19684 bytes).
+Output written on whitecell.dvi (4 pages, 26948 bytes).
