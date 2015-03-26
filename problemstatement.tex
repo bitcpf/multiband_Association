@@ -1,0 +1,299 @@
+% Background and problem model
+\subsection{Challenges And Analysis}
+\label{subsec:challenge}
+
+Prior works model similar multi-channel system as $M/M/m$ queuing system for analyzing.
+Other than prior works, this system is not able to be formulated as a $M/M/m$ queuing system due to the 
+propagation variation across white space bands and WiFi bands. The users in this system can only be 
+served by the white space channels and the WiFi channels assigned in the cell. 
+Moreover, we use a measurement based channel estimation other than an on-off channel model in 
+this work. 
+To design such wireless system, the waiting time constraints have to be satisfied for the quality of service. 
+Previous multi-channel works apply $M/M/m$ queuing model for similar system. However, the spectrum 
+variation and the white space channel splitting in this system remove the equal service capacity in the system.
+Thus, $M/M/m$ queuing system is not directly applicable to get the minimum channel resource which is the
+number of servers of the queuing system. 
+
+% User diversity
+Also a practical system suffer multi-user diversity.
+Multi-user diversity is a form of diversity inherent in a wireless network, provided by 
+independent time-varying channels across the different users~\cite{viswanath2002opportunistic}.
+% Channel capacity diversity
+The user diversity make the channel capacity vary across users. In this system, some WiFi cells may 
+have good white space channels while the others may suffer worth white space performance. 
+Thus, in-field measurements based channel capacity estimation become an important role in such system.
+
+
+To answer the design question, we first get the channel capacity from the in-field measurement, then we 
+propose a Greedy Server-side Replace (GSR) algorithm to minimize the power consumption and achieve the 
+performance constraints.
+
+
+% User group
+The users of the the same WiFi cell are in a heterogeneous queuing system with server of 
+WiFi channels and white space channels with service rate $\mu_1,\mu_2,...\mu_{(F_w+1)}$.
+The white space channel capacity could be split into multiple WiFi cells, thus, the 
+capacity of the white space is usually the minimum channel capacity in a WiFi cell.
+The white space channels in a WiFi cell should be less than the WiFi channel or about equal. 
+Thus, we apply the transformation model in~\cite{yu2008transformation} to estimate the response 
+time $\bar{w}$ which should be less than $W$.
+%\label{eq:transformation}
+%\mu_{min}=\min{(\mu_1,\mu_2,...\mu_{(F_w+1)})} \\
+%\mu_{max}=\max{(\mu_1,\mu_2,...\mu_{(F_w+1)})}//
+%k=\frac{\mu_{max}}{\mu_{min}}
+%\end{equation}
+In this transformation model, the actual arrival rate for one specific server $\lambda_s$ is defined as in 
+Eq.~\ref{eq:actarrivalrate}
+\begin{equation}
+\label{eq:actarrivalrate}
+\lambda_s=D/(F_w+1)
+\end{equation}
+
+The other parameters are defined in Eq.~\ref{eq:transformation} to~\ref{eq:kvalue}.
+\begin{equation}
+\label{eq:transformation}
+\mu_{min}=\min{(\mu_1,\mu_2,...\mu_{(F_w+1)})} = \bar{\mu}
+\end{equation}
+
+\begin{equation}
+\mu_{max}=\max{(\mu_1,\mu_2,...\mu_{(F_w+1)})} 
+\end{equation}
+
+\begin{equation}
+\label{eq:kvalue}
+k= \lfloor\frac{\mu_{max}}{\mu_{min}} \rfloor
+\end{equation}
+
+When $k=1$, the system could be treated as a homogeneous system. Otherwise,   
+$k\ge2$ the average response time of such heterogeneous system could be represented as in Eq.~\ref{eq:heterresponse}\cite{yu2008transformation}:
+
+\begin{equation}
+\label{eq:heterresponse}
+\bar{w}=\frac{1}{\frac{1}{3}\bar{\mu}(2k+1)-\lambda_s}
+\end{equation}
+
+If the traffic could be served only by part of a single white space channel or the WiFi channel, the users in the cell 
+converge into a $M/M/1$ queuing. Another scenario is when the traffic occupies two or more channels, the system become 
+a $M/M/m$ queuing system. The average response time is calculated as in Eq.~\ref{eq:mm1w} and Eq.~\ref{eq:mmmw}~\cite{gelenbe1998introduction}.
+\begin{equation}
+\label{eq:mm1w}
+\bar{w}=\frac{1}{\mu^+-D}
+\end{equation}
+$\mu^+$ is the channel capacity of the single server in queuing system.
+\begin{equation}
+\label{eq:mmmw}
+\bar{w} = \frac{1}{\mu^*}(1+\frac{c(m,\rho)}{m(1-\rho)})\approx \frac{1}{\mu^*}\frac{1}{1-\rho^m}
+\end{equation}
+$\mu^*$ is the channel capacity in the $M/M/m$ queuing system.
+$\rho=\frac{\lambda}{m\mu^*}$ is the traffic density, and $c(m,\rho)$ is the Erlang-C formula~\cite{gelenbe1998introduction}.
+
+Through the above analysis, we could calculate the channel capacity need to be spent for certain group of users. 
+% Here
+% Do I need to consider the rate of the consumption?
+To model the power consumption of the system, we assume the power consumption of each operating radio include 
+standby and transmitting power.
+The operated radios $R_i$ in the system is chosen from the WiFi radios $F_M$ and the white space radios $F_w$. 
+If the a radio $R_i$ is chosen, $R_i = 1$, otherwise $R_i = 0$, as shown in Eq.~\ref{eq:radio}
+%FIXME need to clarify the \mu, may replace the H with mu
+
+\begin{equation}
+\label{eq:radio}
+ R_i(t) = \left\{ 
+	  \begin{array}{l l}
+	    P_s+P_t\cdot\mu   &  \sum\limits_{j=1}^N A_{i,j}(t) \ge 1\\
+		0 &  Otherwise
+			    \end{array} \right.
+\end{equation}
+
+
+For the carrier, reduce the power consumption is important for cost saving.
+Our goal is, during a certain $T$ time slot, to minimize the power consumption as represented in Eq.~\ref{eq:objective}:
+\begin{equation}
+\label{eq:objective}
+R^*(t) = \min{\{\sum\limits_{t=0}^{T}\sum\limits_{i=1}^{(F_M+F_w)} R_{i}}(t)\}
+%\xi = \min{\{\sum\limits_{t}^{t+T}\sum\limits_{i}^{(F_M+F_w)} R_{i}}(t)\}
+\end{equation}
+$R^*$ represent the minimum operating radios power during $T$ time slots required to satisfy the 
+users in the system. 
+
+In this model, the less radio we operate in each time slot, the less power consumption will be cost in the system.
+To split the white space capacity we propose a Greedy Server-side Replace(GSR) algorithm to approach the minimize 
+number of radios operate in the system. The algorithm output the channel resource allocation to satisfy the waiting 
+time constraint of the system.
+
+
+% power consumption extreme
+For the power consumption, there are two extremes. When the traffic rate $D$ is low, a white space channel could 
+serve all the users in the propagation range. On the other side, when all the WiFi cells have high traffic demand, 
+both the WiFi and white space radios have to work for the users. Between the two extremes, when the user traffic 
+is medium heavy and the location distribution is non-uniform, the white space channels could adapt these cases.
+
+A white space radio is able to replace a WiFi radio if part of the channel capacity could serve the users in the 
+WiFi cell. If each WiFi cell could be served by the least channel resource, the more radios could be turned off. 
+The less capacity assigned for the WiFi cells, the less power will be cost for transmission.
+
+\begin{algorithm}[t]
+\small
+\caption{Greedy Server-side Replace}
+\label{algorithm:mape}
+\begin{algorithmic}[1]
+\REQUIRE  ~~\\
+$N$: Users\\
+$H_{i,j}^f$: Vector of channel capacity\\
+$D$: Traffic Rate\\
+$n$: Path Loss Exponent \\
+$M$: WiFi Cells
+\STATE {Find the WiFi cell with the lowest traffic rate $D$,break the tie with index}
+\IF {Check with Eq.~\ref{eq:heterresponse}~\ref{eq:mm1w}~\ref{eq:mmmw} if white space channel satisfy the users, start with the worst/most utilized white space channel}
+\STATE Replace the WiFi channel with the white space channel
+\STATE Apply half-interval search to find the minimum capacity for the users
+\ELSIF {The WiFi channel satisfy the users}
+\STATE Keep the WiFi channel and find the minimum capacity for the users
+\ELSIF {White space channels available}
+\STATE Adding white space resource to the cell
+\ELSE 
+\STATE Get the response time of the cell with all available resource
+\ENDIF
+\STATE Update the system information
+\STATE Repeat the process for all the cells
+\STATE Calculate the power consumption
+\ENSURE ~~\\
+The power consumption and the maximum response time\\
+\end{algorithmic}
+\end{algorithm}
+
+The calculation of channel capacity $H$ will be discussed in Section~\ref{sec:experiment}.
+The algorithm starts to reduce the standby power then the transmitting power for each server.
+%
+%
+%% Traffic served
+%With a schedule $A$, the served traffic flow of a user is the minimize value of the queue with 
+%enough channel capacity, or the remaining capacity. The condition $\psi$ as shown in Eq.~\ref{eq:sfcondition}
+%\begin{equation}
+%\label{eq:sfcondition}
+%		\psi =  \sum\limits_{j=1}^N \gamma_j(t) \cdot A_{i,j}(t) 
+%		%when \ \sum\limits_{j=1}^N \gamma_j(t) \cdot A_{i,j}(t) > C
+%		%	    \end{array} \right.
+%\end{equation}
+%
+%The served traffic flow is represented as in Eq.~\ref{eq:effectiverate}
+%\begin{equation}
+%\label{eq:effectiverate}
+% \gamma_j(t) = \left\{ 
+%	  \begin{array}{l l}
+%	     \min\limits_{j\in N}(Q_j(t),\sum\limits_{i=1}^{F_M+F_w} A_{i,j}(t) \cdot H_{i,j}(t)) & \psi \le C    \\ 
+%		 0 & \psi > C
+%			    \end{array} \right.
+%\end{equation}
+%
+%
+%
+%% The length of the queue
+%The new arrival traffic demand $D_i(t)$ can not be served at the current time slot $t$.
+%The individual queues $Q_j(t),j\in N$ at the end of the time slot $t$ is represented as Eq.~\ref{eq:userqueue}:
+%\begin{equation}
+%\label{eq:userqueue}
+%%Q_j(t) = Q_j(t-1)+D_j(t)-\min{\{\sum\limits_{i=1}^{(F_m+F_w)} H_{i,j}(t)\cdot A_{i,j}(t),Q_j(t-1)}\}
+%Q_j(t) = Q_j(t-1)+D_j(t)- \gamma_j(t)
+%\end{equation}
+%
+%
+%
+%% Here D is preknow in T slots and discuss the T constraints
+%In this system, the channel capacity $H_{i,j}^f(t)$ is from the SNR according to 
+%Friis model and in-field measurements. We consider discrete time with a suitably 
+%chosen small time unit. %One user can only associate 
+%%with a single channel during a time slot to avoid heavy interference. 
+%Users scheduled with the same channel will share the time unit through time division inside 
+%the time slot. 
+%
+%% Constraints
+%
+%
+%% Discuss the feasibility of buffer
+%The minimize number of operating radios has to fulfill the maximize capacity of each user greater than 
+%the remaining buffer and the new coming data as shown in Eq.~\ref{eq:capacity}
+%\begin{equation}
+%\label{eq:capacity}
+%\sum\limits_{j=1}^{F_m+F_b}H_{ij}(T)\ge Q_i(T) ,\ i\in N
+%\end{equation}
+%Otherwise the buffer will be overflow, and there is no feasible solution of the system.
+
+
+
+
+% Linear is not good enough complexity unsure channel state
+
+
+% Greedy algorithm
+
+
+
+
+
+
+
+
+% Channel state estimation
+
+
+
+
+
+
+
+
+% Reduce the radio/server/channel resource
+
+
+
+% New section feasibility, and Max flow formulation
+
+%The model could be formulated as a {\it Max-Flow} problem~\cite{networkoptimization}. The question is 
+%looking for a feasible flow $\Gamma$ under the constraints of channel capacity $H$ and traffic demand $D$. 
+%The lower bound of flow is $0$, the upper bound of a single flow from the accss point $i$ to user $j$ is 
+%the measurements based $H_{i,j}^b$.
+%Thus, $\gamma_j \le \sum\limits_{i\in M} \sum\limits_{b \in B} H_{i,j}^b\cdot A_{i,j}^b$. The max-flow model 
+%of the problem is feasible. 
+
+
+
+
+
+
+
+
+
+
+
+% Greedy algorithm
+
+
+
+
+
+
+
+
+% Channel state estimation
+
+
+
+
+
+
+
+
+% Reduce the radio/server/channel resource
+
+
+
+% New section feasibility, and Max flow formulation
+
+%The model could be formulated as a {\it Max-Flow} problem~\cite{networkoptimization}. The question is 
+%looking for a feasible flow $\Gamma$ under the constraints of channel capacity $H$ and traffic demand $D$. 
+%The lower bound of flow is $0$, the upper bound of a single flow from the accss point $i$ to user $j$ is 
+%the measurements based $H_{i,j}^b$.
+%Thus, $\gamma_j \le \sum\limits_{i\in M} \sum\limits_{b \in B} H_{i,j}^b\cdot A_{i,j}^b$. The max-flow model 
+%of the problem is feasible. 
+

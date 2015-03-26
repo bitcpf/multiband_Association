@@ -1,5 +1,5 @@
 BASE = whitecell
-SRC = notation.tex whitecell.tex problemformulation.tex conclusion.tex abstract.tex introduction.tex related.tex whitecell.bib experiment.tex
+SRC = notation.tex whitecell.tex problemstatement.tex problemformulation.tex conclusion.tex abstract.tex introduction.tex related.tex whitecell.bib experiment.tex
 
 all: $(BASE).ps 
 b: $(BASE).bbl

@@ -1,8 +1,8 @@
-\section{Model, Assumptions and Problem Formulation}
+\section{System, Assumptions and Problem Formulation}
 \label{sec:problemformulation}
 
 % Background and problem model
-\subsection{Model and Assumptions}
+\subsection{System and Assumptions}
 \label{subsec:model}
 
 % Background
@@ -45,57 +45,52 @@ of white space channels make it possible to assist a WiFi mesh with few white sp
 % Give the model and assumption
 % B channel; N user; M AP;
 Given a WiFi mesh wireless system with $M$ access points and $N$ users as shown in Fig.~\ref{fig:systemmodel}. 
-The users are scheduled with the access point on the single channel $f \in F_M$ located in its own mesh. We consider $F_w$ 
-new white space radios is installed on one of the access points to assistant the existing WiFi network. The 
-capacity of each radio $C$ is a equally restrict number of all the channels. For each user, it has $1+F_w$ 
-channels to be scheduled, the previous WiFi channels and the new white space channels. 
-Then the $N$ users has the options to schedule either WiFi or the new white space channels. 
-The channel capacity of the scheduled channels between the access points and users is 
-noted as a matrix in Eq.~\ref{eq:usercapacity}
+The users are scheduled with the access point on the single channel $f \in F_M$ located in its own mesh. 
+We consider $F_w$ new white space radios is installed on one of the access points to assistant the existing WiFi 
+network. The capacity of each radio $C$ is a equally restrict number of all the channels. 
+Each radio has enough buffer store the traffic demand. 
+The traffic is served in a FIFO system.
+For each user, it 
+has $1+F_w$ channels to be scheduled, the previous in-cell WiFi channel and the new white space channels. 
+Instead of assuming the wireless are on-off~\cite{bodas2012low}, we apply our measurements to estimate the 
+channel capacity. The capacity of the scheduled channels between the access points and users is noted as a 
+matrix in Eq.~\ref{eq:usercapacity}
 \begin{equation}
 \label{eq:usercapacity}
-H_{i,j}^f(t)= G(\lambda,t),i \in M, j\in N, f \in (F_M+F_w) 
+H_{i,j}^f(t)= G(\zeta,t),i \in M, j\in N, f \in (F_M+F_w) 
 \end{equation} 
-$\lambda$ represents the in-field measured historical data and dynamic sensing information.
+$\zeta$ represents the in-field measured historical data and dynamic sensing information.
 We use a context-aware method to estimate the $j$ user capacity $H_{i,j}^f(t)$ to an access point 
-$i$ on channel $f$. We assume the users from the same mesh cell are in a single interference 
-domain, so these users have to apply a time division for the WiFi channel assigned for this cell. 
-Only one user of the system could occupy a single channel during a time slot. Considering the 
-limited number of white space channels in dense area and the fact spatial reuse of white space 
-will make the problem considerably more challenging, we will remains an interesting direction 
-of future research. 
+$i$ on channel $f$. 
+We assume the users from the same mesh cell are in a single interference domain.
+%These users share  a time division for the WiFi channel assigned for this cell. 
+Considering the limited number of white space channels in dense area and the fact spatial reuse 
+of white space will make the problem considerably more challenging, we will remains an interesting 
+direction of future research. 
 % Enough channel resource given
-We assume there are enough channel resource given for the system according to worst channel capacity 
-state $H_{i,j}^{f*}(t)$.
+%We assume there are enough channel resource given for the system according to worst channel capacity 
+%state $H_{i,j}^{f*}(t)$.
+
+
+We assume the channel capacity is flat during a time slot. We also assume the switching time is negligible. 
+The traffic demand arrive at a user as a Poisson process, with the vector noted as $\bm{D(t)} = [D_1(t),D_2(t),...D_N(t)]$ 
+and the sum rate $D(t) = \sum\limits_{i=1}^N D_i(t)$.  The rate $D(t)$ is the aggregate rate of data 
+generated from all users. 
+
 
 
 % Buffer and tolerance time
 In a time slot, we assume the unscheduled radios remain in sleep mode to save energy. 
 Also we ignore the sleeping energy as well as the amount of energy spent on channel/radio 
 switching. An operating radio will cost equal power during a time unit. 
-In ~\cite{niida2010user}, a user has a certain patience for waiting. 
+Previous work~\cite{niida2010user} shows a user has a certain patience for waiting. 
 The tolerance time varies across the traffic type, such as text information, 
-voice information. We noted as tolerance time as $\mu$. To simply the problem, 
-we assume an arbitrary average value for $\mu$ for the users in the area. 
-The user experience will be worse if the waiting time longer than $\mu$.
-Another assumption is each user has $B$ buffer store the traffic demand. 
-The buffer is a FIFO system.
- 
+voice information. 
+To simply the problem, we assume an arbitrary average 
+value for $W$ of the users in the area. 
+The system apply a first-come-first-serve schedule. 
 
 
-% Here D is preknow in T slots and discuss the T constraints
-In this system, the channel capacity $H_{i,j}^f(t)$ is from the SNR according to 
-Friis model and in-field measurements. We consider discrete time with a suitably 
-chosen small time unit. %One user can only associate 
-%with a single channel during a time slot to avoid heavy interference. 
-Users scheduled with the same channel will share the time unit through time division inside 
-the time slot. We assume the channel capacity is flat during a time slot. 
-We assume the switching time is negligible. The traffic demand arrive at a user as a 
-Poisson process, with the vector noted as $\bm{D(t)} = [D_1(t),D_2(t),...D_N(t)]$ and the 
-sum rate $D(t) = \sum\limits_{i=1}^N D_i(t)$.  The rate $D(t)$ is the aggregate rate of data 
-generated from all users. 
-We assume the user traffic during the tolerance time $\mu$ are pre-known.
-And the last time slot of $\mu$ has no traffic of users.
 %The served traffic flow $\Gamma$ represents the traffic  
 %delivered to the access points through the wireless channels.
 
@@ -133,9 +128,9 @@ And the last time slot of $\mu$ has no traffic of users.
 
 
 We formulate the system discussed in~\ref{subsec:model} as a discrete-time queuing system as shown in 
-Fig.~\ref{fig:flowconfig}. The channels are represented as a servers in the queuing system.
-Table.~\ref{tab:notation} summarizes the notation used in this work.
-The queuing system has $N$ queues and $F_M+F_w$ servers connecting by time-varying channels $H^*(N,F_M+F_w)$.
+Fig.~\ref{fig:flowconfig}. The channels are represented as servers in the queuing system. Table.~\ref{tab:notation} 
+summarizes the notation used in this work. The queuing system has $N$ queues and $F_M+F_w$ servers connecting 
+by time-varying channels $H^*(N,F_M+F_w)$.
 
 
 \input{notation}
@@ -163,146 +158,39 @@ will be discussed later.
  A_{i,j}(t) = \left\{ 
 	  \begin{array}{l l}
 	    1   &  if\ D_{j\in N},\ is\ scheduled\ with\ \\
-		& channel\ j \in (F_M+F_w) \\
+		& channel\ i \in (F_M+F_w) \\
 		0 &  Otherwise
 			    \end{array} \right.
 \end{equation}
 
-
-
-%We assume one user can only associate with a single access point on a single channel in Eq.~\ref{eq:associate}
+% System constraint, buffer, waiting time
+%The traffic is a Poisson process, which means the users could store part of the traffic in the 
+%buffer. Thus, the expected length of the queue should be less than the buffer as shown in Eq.~\ref{eq:bufferconstraint} 
 %\begin{equation}
-%\label{eq:associate}
-%\sum\limits_{i=1}^{M+B} A_{i,j} \le 1
+%\label{eq:bufferconstraint}
+%%\sum\limits_{t^*}^{t^*+\mu_j}\gamma_j(t^*) \ge Q(t^*)+D(t^*), j\in N
+%E[Q_j] \le B , j\in N
 %\end{equation}
-%We now analyze the traffic with the objective of maximizing the served traffic flow over the channel 
-%association.
+%$B$ is the buffer size of a user.
 
-% Traffic served
-With a schedule $A$, the served traffic flow of a user is the minimize value of the queue with 
-enough channel capacity, or the remaining capacity. The condition $\psi$ as shown in Eq.~\ref{eq:sfcondition}
+To satisfy the users, the system need to keep the expected waiting time of the system $w$ need to be less than the 
+threshold $W$ as shown in Eq.~\ref{eq:timeconstraint}
 \begin{equation}
-\label{eq:sfcondition}
-		\psi =  \sum\limits_{j=1}^N \gamma_j(t) \cdot A_{i,j}(t) 
-		%when \ \sum\limits_{j=1}^N \gamma_j(t) \cdot A_{i,j}(t) > C
-		%	    \end{array} \right.
-\end{equation}
-
-The served traffic flow is represented as in Eq.~\ref{eq:effectiverate}
-\begin{equation}
-\label{eq:effectiverate}
- \gamma_j(t) = \left\{ 
-	  \begin{array}{l l}
-	     \min\limits_{j\in N}(Q_j(t),\sum\limits_{i=1}^{F_M+F_w} A_{i,j}(t) \cdot H_{i,j}(t)) & \psi \le C    \\ 
-		 0 & \psi > C
-			    \end{array} \right.
+\label{eq:timeconstraint}
+E[w]\le W
 \end{equation}
 
 
-
-% The length of the queue
-The new arrival traffic demand $D_i(t)$ can not be served at the current time slot $t$.
-The individual queues $Q_j(t),j\in N$ at the end of the time slot $t$ is represented as Eq.~\ref{eq:userqueue}:
-\begin{equation}
-\label{eq:userqueue}
-%Q_j(t) = Q_j(t-1)+D_j(t)-\min{\{\sum\limits_{i=1}^{(F_m+F_w)} H_{i,j}(t)\cdot A_{i,j}(t),Q_j(t-1)}\}
-Q_j(t) = Q_j(t-1)+D_j(t)- \gamma_j(t)
-\end{equation}
-
-
-% Buffer constraint
-In the system, the queue must be able to store in the buffer of user as in Eq.~\ref{eq:bufferconstraint} 
-\begin{equation}
-\label{eq:bufferconstraint}
-%\sum\limits_{t^*}^{t^*+\mu_j}\gamma_j(t^*) \ge Q(t^*)+D(t^*), j\in N
-Q_j(t) \le B
-\end{equation}
-$B$ is the buffer size of a user.
-
-% Radio representation
-The operated radios $R_i$ in the system is chosen from the WiFi radios $F_M$ and the white space radios $F_w$. 
-If the a radio $R_i$ is chosen, $R_i = 1$, otherwise $R_i = 0$, as shown in Eq.~\ref{eq:radio}
-\begin{equation}
-\label{eq:radio}
- R_i(t) = \left\{ 
-	  \begin{array}{l l}
-	    1   &  \sum\limits_{j=1}^N A_{i,j}(t) \ge 1\\
-		0 &  Otherwise
-			    \end{array} \right.
-\end{equation}
-
-During the $\mu$ time slot, the system have to transfer all the data coming to and in 
-the buffer. During the $\mu$ time slot, to minimize the power consumption is 
-important for the carriers.
-The goal is represented as shown in Eq.~\ref{eq:objective}:
-\begin{equation}
-\label{eq:objective}
-R^*(t) = \min{\{\sum\limits_{t=0}^{\mu}\sum\limits_{i=1}^{(F_M+F_w)} R_{i}}(t)\}
-%\xi = \min{\{\sum\limits_{t}^{t+T}\sum\limits_{i}^{(F_M+F_w)} R_{i}}(t)\}
-\end{equation}
-$R^*$ represent the minimum operating radios power during $\mu$ time slots required to satisfy the 
-users in the system. 
-
-% Discuss the feasibility of buffer
-When the total traffic demand of the users are small, one radio in white space could achieve the 
-requirements of the users. However, as the total traffic demand increase with the number of users 
-or the demand per user, we need to the find the feasibility of the system first. 
-The minimize number of operating radios has to fulfill the maximize capacity of each user greater than 
-the remaining buffer and the new coming data as shown in Eq.~\ref{eq:capacity}
-\begin{equation}
-\label{eq:capacity}
-\sum\limits_{j=1}^{F_m+F_b}H_{ij}(T)\ge Q_i(T) ,\ i\in N
-\end{equation}
-Otherwise the buffer will be overflow, and there is no feasible solution of the system.
-
-Instead of an On-off channel, we apply a measurement based channel state estimation $H_{i,j}^f(t)$ 
-in the system. The system is designed based on the worst channel state $H_{i,j}^{f*}(t)$ having enough 
-resource for scheduling. Thus, the question is when the channel state $H_{i,j}^f$ is better, how many 
-channel resource we can reduce from the system for current time slot $t$.
-
- 
+With the intuition, when the total traffic demand of the users in the system are small, one white space radio in 
+white space could achieve the quality of service for the users. Thus all the WiFi radios could be turned down. 
+However, as the traffic demand increase with the number of users or the demand per user, we need to increase the 
+channel resource from the system to satisfy the user requirements. 
+Another advantage scenario of white space channels are when some of the WiFi cells have more traffic demand, we can spend more 
+white space channel capacity for these cells without building new infrastructure. 
+Then the questions come as, how much power we could save through divide the white space capacity into the WiFi cells? 
+And how much user traffic demand variation we could adapt in one or more cells in the system?
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-% Greedy algorithm
-
-
-
-
-
-
-
-
-% Channel state estimation
-
-
-
-
-
-
-
-
-% Reduce the radio/server/channel resource
-
-
-
-% New section feasibility, and Max flow formulation
-
-%The model could be formulated as a {\it Max-Flow} problem~\cite{networkoptimization}. The question is 
-%looking for a feasible flow $\Gamma$ under the constraints of channel capacity $H$ and traffic demand $D$. 
-%The lower bound of flow is $0$, the upper bound of a single flow from the accss point $i$ to user $j$ is 
-%the measurements based $H_{i,j}^b$.
-%Thus, $\gamma_j \le \sum\limits_{i\in M} \sum\limits_{b \in B} H_{i,j}^b\cdot A_{i,j}^b$. The max-flow model 
-%of the problem is feasible. 
 

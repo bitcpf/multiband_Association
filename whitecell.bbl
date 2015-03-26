@@ -72,9 +72,24 @@ H.~T. Friis, ``A note on a simple transmission formula,'' vol.~34, no.~5, pp.
 T.~Rappaport, \emph{Wireless Communications, Principles \& Practice}.\hskip 1em
   plus 0.5em minus 0.4em\relax Prentice Hall, 1996.
 
+\bibitem{bodas2012low}
+S.~Bodas, S.~Shakkottai, L.~Ying, and R.~Srikant, ``Low-complexity scheduling
+  algorithms for multichannel downlink wireless networks,'' \emph{Networking,
+  IEEE/ACM Transactions on}, vol.~20, no.~5, pp. 1608--1621, 2012.
+
 \bibitem{niida2010user}
 S.~Niida, S.~Uemura, and H.~Nakamura, ``User tolerance for waiting time,''
   \emph{IEEE Vehicular Technology Magazine}, vol.~5, no.~3, pp. 61--67, 2010.
+
+\bibitem{yu2008transformation}
+S.~Yu, R.~Doss, T.~Thapngam, and D.~Qian, ``A transformation model for
+  heterogeneous servers,'' in \emph{High Performance Computing and
+  Communications, 2008. HPCC'08. 10th IEEE International Conference on}.\hskip
+  1em plus 0.5em minus 0.4em\relax IEEE, 2008, pp. 665--671.
+
+\bibitem{gelenbe1998introduction}
+E.~Gelenbe, G.~Pujolle, and J.~Nelson, \emph{Introduction to queueing
+  networks}.\hskip 1em plus 0.5em minus 0.4em\relax Citeseer, 1998.
 
 \bibitem{fccwhitespace}
 ``Fcc white space,'' \url{http://www.fcc.gov/topic/white-space}, 2012.
@@ -96,16 +111,17 @@ P.~Cui, H.~Liu, J.~He, O.~Altintas, R.~Vuyyuru, D.~Rajan, and J.~Camp,
   ``Leveraging diverse propagation and context for multi-modal vehicular
   applications,'' in \emph{{IEEE WiVeC}}, 2013.
 
-\bibitem{bodas2012low}
-S.~Bodas, S.~Shakkottai, L.~Ying, and R.~Srikant, ``Low-complexity scheduling
-  algorithms for multichannel downlink wireless networks,'' \emph{Networking,
-  IEEE/ACM Transactions on}, vol.~20, no.~5, pp. 1608--1621, 2012.
-
 \bibitem{ji2013performance}
 B.~Ji, G.~R. Gupta, X.~Lin, and N.~B. Shroff, ``Performance of low-complexity
   greedy scheduling policies in multi-channel wireless networks: Optimal
   throughput and near-optimal delay,'' in \emph{INFOCOM, 2013 Proceedings
   IEEE}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 2013, pp. 2589--2597.
+
+\bibitem{liu2014energy}
+L.~Liu, X.~Cao, Y.~Cheng, L.~Du, W.~Song, and Y.~Wang, ``Energy-efficient
+  capacity optimization in wireless networks,'' in \emph{INFOCOM, 2014
+  Proceedings IEEE}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 2014, pp.
+  1384--1392.
 
 \bibitem{nelissen2012techniques}
 G.~Nelissen, V.~Berten, J.~Goossens, and D.~Milojevic, ``Techniques optimizing
@@ -118,5 +134,11 @@ J.~Li, J.~J. Chen, K.~Agrawal, C.~Lu, C.~Gill, and A.~Saifullah, ``Analysis of
   federated and global scheduling for parallel real-time tasks,'' in
   \emph{Real-Time Systems (ECRTS), 2014 26th Euromicro Conference on}.\hskip
   1em plus 0.5em minus 0.4em\relax IEEE, 2014, pp. 85--96.
+
+\bibitem{chen2011feasibility}
+S.~Chen, A.~M. Wyglinski, S.~Pagadarai, R.~Vuyyuru, and O.~Altintas,
+  ``Feasibility analysis of vehicular dynamic spectrum access via queueing
+  theory model,'' \emph{Communications Magazine, IEEE}, vol.~49, no.~11, pp.
+  156--163, 2011.
 
 \end{thebibliography}
