@@ -5,35 +5,18 @@ In this section, we introduce the measurements experiments setup and
 evaluate the process of probabilistic forecasting of channel state.
 
 % Subsec Experiment design
-\subsection{Experiment Setup}
-\label{subsec:experimentdesign}
+\subsection{Measurements}
+\label{subsec:measurements}
 
 % 24 hours measurement introduction
 We perform measurements in neighborhoods, campus, downtown bussiness office and 
 urban bussiness office for 24 hours on weekdays. 
-
+The locations we chosen for measurements are shown in Fig.~\ref{fig:measurements}.
 
 % Experiment equipment
-We employ a Linux-based 802.11 testbed, which includes a Gateworks 2358 board with 
-Ubiquiti XR radios (XR9 at 900 MHz, XR2 at 2.4 GHz, XR5 at 5.2 GHz) and a DoodleLabs DL475 
-radio at 450 MHz.  We develop shell scripts which utilize tcpdump to enable the testbed to
-work as a sniffer, recording all 802.11 packets. However, since the Gateworks platform only 
-updates its estimate of received signal strength upon the reception of a new packet (and
-not all relevant channel activity is 802.11 based), we employ a spectrum analyzer to form 
-a notion of inter-network interference with finer granularity.  Hence, we also use a Rohde \& Schwarz FSH8 
-portable spectrum works from 100 KHz to 8 GHz. The portable spectrum analyzer is controlled 
-by a Python script on a laptop to measure the received signal strength.
-
-%We perform experiments in downtown Dallas, SMU campus, and neighborhood. The results show
-%no 802.11 packets detected in white space bands(450 MHz, 900 MHz) there. 
-%And in DFW area, as far as we know, we are the only group holds FCC license of white space bands. 
-%Our experiments verify that these bands have not been used for commercial wireless data communication.
-%Moreover, we observed that Gateworks platform only update its received signal strength when received
-%a new packet.
-%It is not good for inter-network interference measurement. To cover the gap,
-%we employ a spectrum analyzer, multiband antenna, mobile antenna and a laptop developing
-%a spectrum sensing system.
-
+We employ a Rohde \& Schwarz FSH8 portable spectrum works from 100 KHz to 8 GHz. 
+The portable spectrum analyzer is controlled by a Python script on a laptop to measure 
+the received signal strength.
 % Data normalize 
 To the best of our knowledge, there is no readily available mobile, multiband antenna from
 450 MHz to 5.2 GHz on the market. Thus, we use a 700-MHz mobile antenna to perform in-field
@@ -47,7 +30,65 @@ received signal at a fixed distance with the 700 MHz antenna and antennas for di
 to obtain the antenna loss for each band. We adjust the received signal strength
 collected via the 700-MHz mobile antenna according to the normalization.
 
-
-
 % Introduce how to calculate the capacity
+% Explain multiband and activity level
+When wireless devices operate in WiFi bands, the channel separation is relatively 
+small (e.g., 5 MHz for the 2.4 GHz band). As a result, many works assume that
+the propagation characteristics across channels are similar. However, with the
+large frequency differences between WiFi and white space bands (e.g., multiple GHz),
+propagation becomes a key factor in the deployment of wireless networks with both bands.
+Here, a frequency band is defined as a group of channels which have
+little frequency separation, meaning they have similar propagation characteristics.
+In this work, we consider the diverse propagation and activity characteristics
+for four total frequency bands: 450 MHz, 800 MHz, 2.4 GHz, and 5.2 GHz.
+We refer to the two former frequency bands as white space bands and
+the two latter frequency bands as WiFi bands.
+The differences in propagation and spectrum utilization create opportunities
+for the joint use of white space and WiFi bands in wireless access networks according
+to the environmental characteristics (e.g., urban or rural and downtown or residential)
+of the deployment location.
+
+
+For spectrum utility and resulting channel availability, 
+we split the measurements every 30 minutes of each band.  We define the percentage of sensing 
+samples ($S_\theta$) above an interference threshold ($\theta$) over the total samples ($S$) in 
+a time unit as the activity level ($A$) of inter-network interference:
+\begin{equation}
+\label{eq:actdef}
+A=\frac{S_\theta}{S_a}
+\end{equation}
+The capacity of a clean channel is denoted by $C$. With the protocol model, the capacity 
+of a channel with inter-network interference $C_r$ could be represented as 
+the remaining free time of the channel capacity according to: 
+\begin{equation}
+\label{eq:intercap}
+C_r=C*(1-\bar{A})
+\end{equation}
+
+
+% Need to discuss the \mu mapping with these measurements stuff
+
+
+
+\subsection{Experiment Setup}
+\label{subsec:experimentsetup}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Results and Analysis}
+\label{subsec:results}
+
 
