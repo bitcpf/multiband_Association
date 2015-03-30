@@ -73,10 +73,90 @@ C_r=C*(1-\bar{A})
 \subsection{Experiment Setup}
 \label{subsec:experimentsetup}
 
+% Virtual city setup
+In this subsection, we apply our GSR algorithm with the measurements in a virtual city to investigate 
+white space band impacts on power consumption. 
+The virtual city include a downtown area, a school campus area, two urban bussiness areas and three 
+neighborhood areas. All the areas are in the same size fit for a single WiFi cell. 
+The white space channels has more than 3 times propagation range than WiFi channels cover 
+all the WiFi cells.
+We assume residents of the city is a constant number. 
+People move from the neighborhoods to the business area and campus in the morning and back in the late 
+afternoon. We assume in a certain weekday all the users are at home. 
+The users start to move at 6:00  with 12\% per half hour until 
+9:30 . the remaining 16\% of users will stay at home in the day time. 
+The users are distributed to the downtown bussiness, urban and school campus areas with ratio 4:3:2.
+In the late afternoon, users starts to go home 
+with a rate 16\% of total users per half hour from 17:00 to 19:00 and 
+the ratio among the area types are 5:4:3.
+The other 3\% users will staty 
+in the downtown bussiness area and 1\% stay in urban bussiness area till midnight. 
+To be clear, we list the population distribution setup of the four areas in Table~\ref{tab:populationsetup}
+
+
+\begin{table}
+\centering
+\begin{tabular}{ | c | c | c | c |c|}
+\hline
+Time & Downtown& Urban x 2 & Campus & Neighbor Total \\
+\hline % inserts single-line 
+0:00 - 6:00  & 0\% & 0\% & 0\% & 100\%   \\
+\hline % inserts single-line 
+6:00-6:30  & 4\% & 3\%  & 2\%  & 88\%  \\
+\hline % inserts single-line 
+6:30-7:30  & 8\% & 6\%  & 4\%  & 76\%  \\ 
+\hline % inserts single-line 
+7:30-8:00  & 12\% & 9\%  & 6\%  & 64\%   \\
+\hline % inserts single-line 
+8:00-8:30  & 16\% & 12\%  & 8\%  & 52\%  \\
+\hline % inserts single-line 
+8:30-9:00  & 20\% & 15\%  & 10\%  & 40\%  \\
+\hline % inserts single-line 
+9:00-9:30  & 24\% & 18\%  & 12\%  & 28\%  \\
+\hline % inserts single-line 
+9:30-17:00  & 28\% & 21\%  & 14\%  & 16\%  \\
+\hline % inserts single-line 
+17:00-17:30  & 23\% & 17\%  & 11\%  & 32\%  \\
+\hline % inserts single-line 
+17:30-18:00  & 18\% & 13\%  & 8\%  & 48\%  \\
+\hline % inserts single-line 
+18:00-18:30  & 13\% & 9\%  & 5\%  & 64\% \\
+\hline % inserts single-line 
+18:30-19:00  & 8\% & 5\%  & 2\%  & 80\% \\
+\hline % inserts single-line 
+19:00-0:0  & 3\% & 1\%  & 0\%  & 95\%  \\
+\hline % inserts single-line  
+\end{tabular}
+\label{tab:populationsetup}    
+\caption{Population Distribution Setup across Area Types} % title name of the table 
+\end{table}
 
 
 
 
+% Time population, user traffic demand and radios capacity setup
+The transmit power of radios are equal and with the same clean channel capacity. 
+The standby power consumption of a radio is 50 watt and transmit power is 0.5 watt per Mbps.
+We lookup population distribution from the US census 2010 to calculate the users in the 
+virtual city. We set the demand requested per user as 0.5 Mbps and assume 30\% of the users will 
+activate their device (ie. the take rate is 30) from 6:00 to 24:00. From 24:00 to 6:00, 5\% of 
+the users device keep working. 
+%  Fixme Time of traffic distribution
+
+
+
+% Time population, user traffic demand and radios capacity setup
+The transmit power of radios are equal and with the same clean channel capacity. 
+The standby power consumption of a radio is 50 watt and transmit power is 0.5 watt per Mbps.
+We lookup population distribution from the US census 2010 to calculate the users in the 
+virtual city. We set the demand requested per user as 1 Mbps and assume 30\% of the users will 
+activate their device (ie. the take rate is 30). 
+
+% Move form homr to school
+% night move home
+
+
+% percentage of resident use the network in day time and night
 
 
 
@@ -90,5 +170,22 @@ C_r=C*(1-\bar{A})
 
 \subsection{Results and Analysis}
 \label{subsec:results}
+
+
+
+% Investigate time
+
+
+
+% Robust
+
+
+
+% Different cities
+
+
+
+% forget the last one, check the notes monday
+
 
 
