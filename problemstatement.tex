@@ -147,13 +147,17 @@ $D$: Traffic Rate\\
 $n$: Path Loss Exponent \\
 $M$: WiFi Cells
 \STATE {Find the WiFi cell with the lowest traffic rate $D$,break the tie with index}
-\IF {Check with Eq.~\ref{eq:heterresponse}~\ref{eq:mm1w}~\ref{eq:mmmw} if white space channel satisfy the users, start with the worst/most utilized white space channel}
-\STATE Replace the WiFi channel with the white space channel
+\STATE {Calculate the power consumption according to Eq.~\ref{eq:heterresponse}~\ref{eq:mm1w}~\ref{eq:mmmw}}
+\IF {If channel resource feasible}
+\STATE {List available options}
+\IF {Single channel is the best}
 \STATE Apply half-interval search to find the minimum capacity for the users
-\ELSIF {The WiFi channel satisfy the users}
+\ELSIF {Homogeneous is the best}
+\STATE Allocate the resource for the cell
 \STATE Keep the WiFi channel and find the minimum capacity for the users
-\ELSIF {White space channels available}
+\ELSIF {Heterogeneous is best}
 \STATE Adding white space resource to the cell
+\ENDIF
 \ELSE 
 \STATE Get the response time of the cell with all available resource
 \ENDIF

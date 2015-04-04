@@ -22,15 +22,26 @@ Here, $n$ varies according to the aforementioned environmental
 factors with a value ranging from two to five in typical outdoor 
 settings~\cite{rappaport}.
 % Tell the propagation of white space is much larger than wifi
-Thus, the channels of white space bands propagates further than the channels of the WiFi bands in 
-free space under the same RSSI threshold, transceiver settings~\ref{eq:friis}. 
+Thus, the channels of low frequency white space bands propagates further than the high frequency WiFi 
+bands the same RSSI threshold, transceiver settings according to Eq.~\ref{eq:friis}. 
 % White spcae is good out resource to improve the service of Wifi cell
-The propagation range of white space channels could be many times of WiFi channels, for instance, 
-450 MHz channels has more than 12 times propagation range as 5 GHz channels. The larger propagation 
-of white space channels make it possible to assist a WiFi mesh with few white space channels. 
+The propagation range of low frequency white space channels is times of WiFi channels, for instance, 
+450 MHz channels has more than 12 times propagation range as 5 GHz channels via Friis model. Thus a 
+single white space access point is possible to serve an area up to hundreds times of a WiFi access point. 
+The larger propagation of white space channels is potentially to be applied for reduction of network deployment 
+cost~\cite{pcuiwinmee}, adaptation of vehicular dynamic access~\cite{chen2011feasibility}, and improvement 
+of network capacity~\cite{bahl2009white}.
+However, previous works focus on the application of plenty white space channels resource or point to point 
+communication require small amount of white space resource. 
+In wireless network design, as discuss in previous works, the more wireless channel resource means the better 
+performance.
+Unfortunately, FCC restricts the number of white space channels in most dense populated areas due to the existing 
+TV broadcasting application. Thus, a heterogeneous network with WiFi channels and few white space channels 
+becomes a practical option for these cities.
+
+
+
 % Power saving
-
-
 \begin{figure}
 \vspace{-0.0in}
 \centering
@@ -44,91 +55,57 @@ of white space channels make it possible to assist a WiFi mesh with few white sp
 
 % Give the model and assumption
 % B channel; N user; M AP;
-Given a WiFi mesh wireless system with $M$ access points and $N$ users as shown in Fig.~\ref{fig:systemmodel}. 
-The users are scheduled with the access point on the single channel $f \in F_M$ located in its own mesh. 
-We consider $F_w$ new white space radios is installed on one of the access points to assistant the existing WiFi 
-network. The capacity of each radio $C$ is a equally restrict number of all the channels. 
-Each radio has enough buffer store the traffic demand. 
-The traffic is served in a FIFO system.
-For each user, it 
-has $1+F_w$ channels to be scheduled, the previous in-cell WiFi channel and the new white space channels. 
-Instead of assuming the wireless are on-off~\cite{bodas2012low}, we apply our measurements to estimate the 
-channel capacity. The capacity of the scheduled channels between the access points and users is noted as a 
-matrix in Eq.~\ref{eq:usercapacity}
+Here, we introduce a heterogeneous network named as WhiteCell with existing WiFi cells and an access point 
+with few number of white space channels as shown in Fig.~\ref{fig:systemmodel}.
+Given a WiFi mesh wireless system with $M$ access points and $N$ users.
+Each of the WiFi cell has access to the white space channels and its own WiFi channel. The reuse of 
+WiFi channels has been discussed in plenty of previous works and it is out of our scope.
+The users of a WiFi cell are associated with an WiFi channel assigned for the access point in the cell or one of 
+the white space channels. 
+There are $F_w$ white space radios is installed on one of the access points to assistant the existing WiFi 
+network. 
+The capacity of each radio $C$ is a equally restrict number of all the channels. There are enough buffer 
+store the traffic demand from the users. 
+The traffic is served in a FIFO scheduling system. 
+In such a network, each user has $1+F_w$ channels to be scheduled. One is the previous in-cell WiFi channel 
+and the white space channels. 
+We assume the users in the same mesh cell are in a single interference domain. 
+Considering the limited number of white space channels in dense area and the fact spatial reuse 
+of white space will make the problem considerably more challenging, we will remains an interesting 
+direction of future research. 
+
+
+Instead of assuming the wireless channels are on-off~\cite{bodas2012low} or equally clean, we apply a  
+measurements method to get the achieved channel capacity. The capacity of the channel between the access 
+points and users is noted as a matrix in Eq.~\ref{eq:usercapacity}
 \begin{equation}
 \label{eq:usercapacity}
 H_{i,j}^f(t)= G(\zeta,t),i \in M, j\in N, f \in (F_M+F_w) 
 \end{equation} 
 $\zeta$ represents the in-field measured historical data and dynamic sensing information.
 We use a context-aware method to estimate the $j$ user capacity $H_{i,j}^f(t)$ to an access point 
-$i$ on channel $f$. 
-We assume the users from the same mesh cell are in a single interference domain.
-%These users share  a time division for the WiFi channel assigned for this cell. 
-Considering the limited number of white space channels in dense area and the fact spatial reuse 
-of white space will make the problem considerably more challenging, we will remains an interesting 
-direction of future research. 
-% Enough channel resource given
-%We assume there are enough channel resource given for the system according to worst channel capacity 
-%state $H_{i,j}^{f*}(t)$.
-
-
-We assume the channel capacity is flat during a time slot. We also assume the switching time is negligible. 
-The traffic demand arrive at a user as a Poisson process, with the vector noted as $\bm{D(t)} = [D_1(t),D_2(t),...D_N(t)]$ 
-and the sum rate $D(t) = \sum\limits_{i=1}^N D_i(t)$.  The rate $D(t)$ is the aggregate rate of data 
-generated from all users. 
-
-
+$i$ on channel $f$. The users in a single cell has the same channel status. We assume the channel 
+capacity is flat during a time slot. The switching time is negligible in the system.
+The calculation of achieved channel capacity is introduced in~\ref{sec:experimentdesign}. 
+The traffic demand arrive at a user as a Poisson process, with the vector noted as 
+$\bm{D(t)} = [D_1(t),D_2(t),...D_N(t)]$ and the sum rate $D(t) = \sum\limits_{i=1}^N D_i(t)$. 
+The rate $D(t)$ is the aggregate rate of data generated from all users. 
 
 % Buffer and tolerance time
-In a time slot, we assume the unscheduled radios remain in sleep mode to save energy. 
-Also we ignore the sleeping energy as well as the amount of energy spent on channel/radio 
-switching. An operating radio will cost equal power during a time unit. 
-Previous work~\cite{niida2010user} shows a user has a certain patience for waiting. 
-The tolerance time varies across the traffic type, such as text information, 
-voice information. 
-To simply the problem, we assume an arbitrary average 
-value for $W$ of the users in the area. 
-The system apply a first-come-first-serve schedule. 
-
-
-%The served traffic flow $\Gamma$ represents the traffic  
-%delivered to the access points through the wireless channels.
-
-
-%As discussed in ~\cite{niida2010user}, the tolerance 
-%time of traffic varies from text information, voice information. To address the user tolerance time, we 
-%have the waiting time constraint $\mu_j,j\in N$ based on the users traffic demand types.  
-% Buffer assumptions
-%Through this waiting time constraint, the waiting time of a user is limited in a certain time window, 
-%which means the traffic of a user will be served during the tolerance time to satisfy the QoS requirements.
-%We define the payoff function according to the waiting time of user's traffic and traffic types in Eq.\ref{eq:payoff}. 
-%To address the user tolerance time, we build the payoff functions based on the users traffic demand and the buffered time of the 
-%traffic demand to process the channel schedule. Through this payoff function, the waiting time of a user is limited in 
-%a certain time window, which means a user will be served at least once to satisfy the QoS requirements.
-%We define the payoff function according to the waiting time of user's traffic and traffic types in Eq.\ref{eq:payoff}. 
-%
-%% Payoff B, benefit
-%\begin{equation}
-%\label{eq:payoff}
-%\xi=\sum \alpha^{t_d}\cdot T
-%\end{equation}
-%%$\alpha$ is a parameter represents the traffic types. 
-%To represents the variation, we define the $\alpha \ge 1$ to represent the tolerance of traffic
-%type to make an individual user stay in the tolerance time. 
-%$t_d$ is the time the user has waited for the traffic in the queue. Through the definition, the traffic could be 
-%scheduled according to the traffic type and the waiting time. 
-%According the the payoff function, the expected benefit of a served beam schedule could be calculated through the BBS framework.
-%With BBS, the time efficient for the system is increased and the satisfaction of users and power efficient.
-
-
-
+During a time slot, the unscheduled radios remain in sleep mode to save energy. Also we ignore 
+the sleeping energy as well as the amount of energy spent on channel/radio switching. An operating 
+radio will cost equal power in a time unit. Previous work~\cite{niida2010user} shows a user has a 
+certain patience for waiting. The tolerance time varies across the traffic type, such as text information, 
+voice information. To simply the problem, we assume an average value for $W$ of all the users in the system. 
+The system applies a first-come-first-serve schedule. The white space channels are able to split for multiple 
+cells.
 
 \subsection{Problem Formulation}
 \label{subsec:problem}
 
-
-We formulate the system discussed in~\ref{subsec:model} as a discrete-time queuing system as shown in 
-Fig.~\ref{fig:flowconfig}. The channels are represented as servers in the queuing system. Table.~\ref{tab:notation} 
+We formulate the system introduced in~\ref{subsec:model} as a discrete-time queuing system as shown in 
+Fig.~\ref{fig:flowconfig}. 
+The channels are represented as servers in the queuing system. Table.~\ref{tab:notation} 
 summarizes the notation used in this work. The queuing system has $N$ queues and $F_M+F_w$ servers connecting 
 by time-varying channels $H^*(N,F_M+F_w)$.
 

@@ -22,38 +22,10 @@
 C.~A. Balanis, \emph{Antenna theory: analysis and design}.\hskip 1em plus 0.5em
   minus 0.4em\relax John Wiley \& Sons, 2012.
 
-\bibitem{viswanath2002opportunistic}
-P.~Viswanath, D.~N.~C. Tse, and R.~Laroia, ``Opportunistic beamforming using
-  dumb antennas,'' \emph{Information Theory, IEEE Transactions on}, vol.~48,
-  no.~6, pp. 1277--1294, 2002.
-
 \bibitem{gan2014multiple}
 Y.~Gan and Y.~Wu, ``Multiple rayleigh fading channels modeling based on
   sum-of-sinusoids model,'' \emph{International Journal of Communication
   Systems}, vol.~27, no.~11, pp. 2997--3012, 2014.
-
-\bibitem{tan2010distributed}
-S.-S. Tan, D.~Zheng, J.~Zhang, and J.~Zeidler, ``Distributed opportunistic
-  scheduling for ad-hoc communications under delay constraints,'' in
-  \emph{Proceedings of the 29th conference on Information
-  communications}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE Press, 2010, pp.
-  2874--2882.
-
-\bibitem{shu2009throughput}
-T.~Shu and M.~Krunz, ``Throughput-efficient sequential channel sensing and
-  probing in cognitive radio networks under sensing errors,'' in
-  \emph{Proceedings of the 15th annual international conference on Mobile
-  computing and networking}.\hskip 1em plus 0.5em minus 0.4em\relax ACM, 2009,
-  pp. 37--48.
-
-\bibitem{liu2013stay}
-Y.~Liu and M.~Liu, ``To stay or to switch: Multiuser dynamic channel access,''
-  in \emph{INFOCOM, 2013 Proceedings IEEE}.\hskip 1em plus 0.5em minus
-  0.4em\relax IEEE, 2013, pp. 1249--1257.
-
-\bibitem{pcuiwinmee}
-D.~R. Pengfei~Cui, Hui~Liu and J.~Camp, ``A measurement study of white spaces
-  across diverse population densities,'' \emph{IEEE 10th WiNMeE}, 2014.
 
 \bibitem{googlespectrum}
 Google, ``Spectrum database,''
@@ -72,6 +44,21 @@ H.~T. Friis, ``A note on a simple transmission formula,'' vol.~34, no.~5, pp.
 T.~Rappaport, \emph{Wireless Communications, Principles \& Practice}.\hskip 1em
   plus 0.5em minus 0.4em\relax Prentice Hall, 1996.
 
+\bibitem{pcuiwinmee}
+D.~R. Pengfei~Cui, Hui~Liu and J.~Camp, ``A measurement study of white spaces
+  across diverse population densities,'' \emph{IEEE 10th WiNMeE}, 2014.
+
+\bibitem{chen2011feasibility}
+S.~Chen, A.~M. Wyglinski, S.~Pagadarai, R.~Vuyyuru, and O.~Altintas,
+  ``Feasibility analysis of vehicular dynamic spectrum access via queueing
+  theory model,'' \emph{Communications Magazine, IEEE}, vol.~49, no.~11, pp.
+  156--163, 2011.
+
+\bibitem{bahl2009white}
+P.~Bahl, R.~Chandra, T.~Moscibroda, R.~Murty, and M.~Welsh, ``White space
+  networking with {WiFi} like connectivity,'' \emph{{ACM SIGCOMM}}, vol.~39,
+  no.~4, pp. 27--38, 2009.
+
 \bibitem{bodas2012low}
 S.~Bodas, S.~Shakkottai, L.~Ying, and R.~Srikant, ``Low-complexity scheduling
   algorithms for multichannel downlink wireless networks,'' \emph{Networking,
@@ -80,6 +67,11 @@ S.~Bodas, S.~Shakkottai, L.~Ying, and R.~Srikant, ``Low-complexity scheduling
 \bibitem{niida2010user}
 S.~Niida, S.~Uemura, and H.~Nakamura, ``User tolerance for waiting time,''
   \emph{IEEE Vehicular Technology Magazine}, vol.~5, no.~3, pp. 61--67, 2010.
+
+\bibitem{viswanath2002opportunistic}
+P.~Viswanath, D.~N.~C. Tse, and R.~Laroia, ``Opportunistic beamforming using
+  dumb antennas,'' \emph{Information Theory, IEEE Transactions on}, vol.~48,
+  no.~6, pp. 1277--1294, 2002.
 
 \bibitem{yu2008transformation}
 S.~Yu, R.~Doss, T.~Thapngam, and D.~Qian, ``A transformation model for
@@ -93,11 +85,6 @@ E.~Gelenbe, G.~Pujolle, and J.~Nelson, \emph{Introduction to queueing
 
 \bibitem{fccwhitespace}
 ``Fcc white space,'' \url{http://www.fcc.gov/topic/white-space}, 2012.
-
-\bibitem{bahl2009white}
-P.~Bahl, R.~Chandra, T.~Moscibroda, R.~Murty, and M.~Welsh, ``White space
-  networking with {WiFi} like connectivity,'' \emph{{ACM SIGCOMM}}, vol.~39,
-  no.~4, pp. 27--38, 2009.
 
 \bibitem{msdatabase}
 ``Microsoft research white space database,''
@@ -123,6 +110,25 @@ L.~Liu, X.~Cao, Y.~Cheng, L.~Du, W.~Song, and Y.~Wang, ``Energy-efficient
   Proceedings IEEE}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 2014, pp.
   1384--1392.
 
+\bibitem{tan2010distributed}
+S.-S. Tan, D.~Zheng, J.~Zhang, and J.~Zeidler, ``Distributed opportunistic
+  scheduling for ad-hoc communications under delay constraints,'' in
+  \emph{Proceedings of the 29th conference on Information
+  communications}.\hskip 1em plus 0.5em minus 0.4em\relax IEEE Press, 2010, pp.
+  2874--2882.
+
+\bibitem{shu2009throughput}
+T.~Shu and M.~Krunz, ``Throughput-efficient sequential channel sensing and
+  probing in cognitive radio networks under sensing errors,'' in
+  \emph{Proceedings of the 15th annual international conference on Mobile
+  computing and networking}.\hskip 1em plus 0.5em minus 0.4em\relax ACM, 2009,
+  pp. 37--48.
+
+\bibitem{liu2013stay}
+Y.~Liu and M.~Liu, ``To stay or to switch: Multiuser dynamic channel access,''
+  in \emph{INFOCOM, 2013 Proceedings IEEE}.\hskip 1em plus 0.5em minus
+  0.4em\relax IEEE, 2013, pp. 1249--1257.
+
 \bibitem{nelissen2012techniques}
 G.~Nelissen, V.~Berten, J.~Goossens, and D.~Milojevic, ``Techniques optimizing
   the number of processors to schedule multi-threaded tasks,'' in
@@ -134,11 +140,5 @@ J.~Li, J.~J. Chen, K.~Agrawal, C.~Lu, C.~Gill, and A.~Saifullah, ``Analysis of
   federated and global scheduling for parallel real-time tasks,'' in
   \emph{Real-Time Systems (ECRTS), 2014 26th Euromicro Conference on}.\hskip
   1em plus 0.5em minus 0.4em\relax IEEE, 2014, pp. 85--96.
-
-\bibitem{chen2011feasibility}
-S.~Chen, A.~M. Wyglinski, S.~Pagadarai, R.~Vuyyuru, and O.~Altintas,
-  ``Feasibility analysis of vehicular dynamic spectrum access via queueing
-  theory model,'' \emph{Communications Magazine, IEEE}, vol.~49, no.~11, pp.
-  156--163, 2011.
 
 \end{thebibliography}
