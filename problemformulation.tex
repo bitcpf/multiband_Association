@@ -65,8 +65,8 @@ the white space channels.
 There are $F_w$ white space radios is installed on one of the access points to assistant the existing WiFi 
 network. 
 The capacity of each radio $C$ is a equally restrict number of all the channels. There are enough buffer 
-store the traffic demand from the users. 
-The traffic is served in a FIFO scheduling system. 
+store the traffic demand from the users on each radio. 
+The traffic is served in a first-in-first-out (FIFO) scheduling system. 
 In such a network, each user has $1+F_w$ channels to be scheduled. One is the previous in-cell WiFi channel 
 and the white space channels. 
 We assume the users in the same mesh cell are in a single interference domain. 
@@ -86,7 +86,7 @@ $\zeta$ represents the in-field measured historical data and dynamic sensing inf
 We use a context-aware method to estimate the $j$ user capacity $H_{i,j}^f(t)$ to an access point 
 $i$ on channel $f$. The users in a single cell has the same channel status. We assume the channel 
 capacity is flat during a time slot. The switching time is negligible in the system.
-The calculation of achieved channel capacity is introduced in~\ref{sec:experimentdesign}. 
+The calculation of achieved channel capacity is introduced in~\ref{subsec:experimentsetup}. 
 The traffic demand arrive at a user as a Poisson process, with the vector noted as 
 $\bm{D(t)} = [D_1(t),D_2(t),...D_N(t)]$ and the sum rate $D(t) = \sum\limits_{i=1}^N D_i(t)$. 
 The rate $D(t)$ is the aggregate rate of data generated from all users. 
@@ -105,14 +105,14 @@ cells.
 
 We formulate the system introduced in~\ref{subsec:model} as a discrete-time queuing system as shown in 
 Fig.~\ref{fig:flowconfig}. 
-The channels are represented as servers in the queuing system. Table.~\ref{tab:notation} 
-summarizes the notation used in this work. The queuing system has $N$ queues and $F_M+F_w$ servers connecting 
-by time-varying channels $H^*(N,F_M+F_w)$.
-
+The channels are represented as servers in the queuing system. 
+% Do we need it?
+Table.~\ref{tab:notation} summarizes the notation used in this work. 
+The system has $F_w$ white space channels, $F_M$ WiFi channels in total and $N$ users.
+Thus, the queuing system has $N$ queues and $F_M+F_w$ servers connecting by time-varying 
+channels $H^*(N,F_M+F_w)$.
 
 \input{notation}
-
-
 
 
 \begin{figure}
@@ -125,48 +125,62 @@ by time-varying channels $H^*(N,F_M+F_w)$.
 \vspace{-0.1in}
 \end{figure}
 
-
-Let matrix \{$A_{i,j}(t),i\in (F_M+F_w), j\in N$\} denote the schedule meets the 
+Let matrix \{$A_{i,j}(t),i\in (F_M+F_w), j\in N$\} denote the associate meets the 
 tolerance constraint as shown in Eq.~\ref{eq:associate_def}.
 %where $A_{i,j}^b = 1$ denotes user $j$ is scheduled with access point $i$ on channel $b$.
 \begin{equation}
 \label{eq:associate_def}
  A_{i,j}(t) = \left\{ 
 	  \begin{array}{l l}
-	    1   &  if\ D_{j\in N},\ is\ scheduled\ with\ \\
+	    1   &  if\ D_{j\in N},\ is\ associated\ with\ \\
 		& channel\ i \in (F_M+F_w) \\
 		0 &  Otherwise
 			    \end{array} \right.
 \end{equation}
 
-% System constraint, buffer, waiting time
-%The traffic is a Poisson process, which means the users could store part of the traffic in the 
-%buffer. Thus, the expected length of the queue should be less than the buffer as shown in Eq.~\ref{eq:bufferconstraint} 
-%\begin{equation}
-%\label{eq:bufferconstraint}
-%%\sum\limits_{t^*}^{t^*+\mu_j}\gamma_j(t^*) \ge Q(t^*)+D(t^*), j\in N
-%E[Q_j] \le B , j\in N
-%\end{equation}
-%$B$ is the buffer size of a user.
-
-To satisfy the users, the system need to keep the expected waiting time of the system $w$ need to be less than the 
-threshold $W$ as shown in Eq.~\ref{eq:timeconstraint}
+The queuing system keeps the expected waiting time of the system $w$ less than the tolerance threshold $W$ 
+as shown in Eq.~\ref{eq:timeconstraint}
 \begin{equation}
 \label{eq:timeconstraint}
 E[w]\le W
 \end{equation}
 
+With the intuition, when the total traffic demand of the users in the system are relatively small, a single 
+white space channel could achieve the quality of service for the users. Thus all the WiFi radios could be turned 
+into sleep mode for power saving. 
+On the other side, as the traffic demand increase with the number of users or the demand per user, we need 
+to increase the channel resource as servers in the system to qualify the user waiting time tolerance requirements. 
+Moreover, when the users are distributed non-uniformly, the white space channels are able to deliver more capacity for 
+the cells with more users to balance the system load without new infrastructure. 
+The flexibility of white space channels offers new opportunity for network design.
+To apply these white space advantages, the question {\it how much power we could save via dividing the white space 
+capacity into the WiFi cells?} has to be addressed in this system.
 
-With the intuition, when the total traffic demand of the users in the system are small, one white space radio in 
-white space could achieve the quality of service for the users. Thus all the WiFi radios could be turned down. 
-However, as the traffic demand increase with the number of users or the demand per user, we need to increase the 
-channel resource from the system to satisfy the user requirements. 
-Another advantage scenario of white space channels are when some of the WiFi cells have more traffic demand, we can spend more 
-white space channel capacity for these cells without building new infrastructure. 
-Then the questions come as, how much power we could save through divide the white space capacity into the WiFi cells? 
-And how much user traffic demand variation we could adapt in one or more cells in the system?
+In this work, we focus on the analysis on the power consumption saving of the heterogeneous wireless system. 
+To model the power consumption of the system, we count the power consumption of each operating radio via 
+standby and transmitting power consumption.
+We assume the sleeping standby power consumption is negligible. 
+We define $R_i$ represents the radios status in the system, $i\in {F_w,F_M}$. 
+When $R_i$ is working in WiFi channels $F_M$ or white space channels $F_w$, $R_i$ denotes the power consumption 
+with the standby and transmitting cost. 
+Otherwise, $R_i = 0$. The definition is as shown in Eq.~\ref{eq:radio}
 
+\begin{equation}
+\label{eq:radio}
+ R_i(t) = \left\{ 
+	  \begin{array}{l l}
+	    P_s+P_t\cdot\mu   &  \sum\limits_{j=1}^N A_{i,j}(t) \ge 1\\
+		0 &  Otherwise
+			    \end{array} \right.
+\end{equation}
 
-
-
+Thus, to reduce the power consumption, we need to minimize $R_i$ for all the radios under the quality of service 
+constraints. 
+Our goal, to minimize the power consumption is represented in Eq.~\ref{eq:objective}:
+\begin{equation}
+\label{eq:objective}
+R^*(t) = \min{\{\sum\limits_{i=1}^{(F_M+F_w)} R_{i}}(t)\}
+%\xi = \min{\{\sum\limits_{t}^{t+T}\sum\limits_{i}^{(F_M+F_w)} R_{i}}(t)\}
+\end{equation}
+$R^*$ represent the minimum operating radios power consumption required for the system. 
 
