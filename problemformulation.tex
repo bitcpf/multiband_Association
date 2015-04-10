@@ -4,7 +4,6 @@
 % Background and problem model
 \subsection{System and Assumptions}
 \label{subsec:model}
-
 % Background
 % Multiband variation
 Wireless propagation refers to the signal loss characteristics when wireless signals 
@@ -23,7 +22,7 @@ factors with a value ranging from two to five in typical outdoor
 settings~\cite{rappaport}.
 % Tell the propagation of white space is much larger than wifi
 Thus, the channels of low frequency white space bands propagates further than the high frequency WiFi 
-bands the same RSSI threshold, transceiver settings according to Eq.~\ref{eq:friis}. 
+bands with the same RSSI threshold, transceiver settings according to Eq.~\ref{eq:friis}. 
 % White spcae is good out resource to improve the service of Wifi cell
 The propagation range of low frequency white space channels is times of WiFi channels, for instance, 
 450 MHz channels has more than 12 times propagation range as 5 GHz channels via Friis model. Thus a 
@@ -33,11 +32,33 @@ cost~\cite{pcuiwinmee}, adaptation of vehicular dynamic access~\cite{chen2011fea
 of network capacity~\cite{bahl2009white}.
 However, previous works focus on the application of plenty white space channels resource or point to point 
 communication require small amount of white space resource. 
+
+
+%FIMXE insert table tell the number of white space channels in US cities
+\begin{table*}[hpt]
+\centering % centering table 
+\begin{tabular}{|l|c|c|c|c|c|c|c|} % 
+\hline %\hline % inserting double-line 
+City & New York & Log Angeles & San Francisco & Seattle & Houston & Austin & Dallas \\
+\hline %\hline % inserting double-line 
+White space channels & 0 & 0 & 2 & 7 & 3 & 1& 3 \\
+\hline %\hline % inserting double-line 
+\end{tabular}    
+\caption{Number of White Space Channels in Major Cities} % title name of the table 
+\label{tab:whitespacechannel}    
+\vspace{-0.3in}
+\end{table*}    
+
 In wireless network design, as discuss in previous works, the more wireless channel resource means the better 
 performance.
 Unfortunately, FCC restricts the number of white space channels in most dense populated areas due to the existing 
-TV broadcasting application. Thus, a heterogeneous network with WiFi channels and few white space channels 
-becomes a practical option for these cities.
+TV broadcasting application. The minimum number of white space channels in major cities in the U.S is listed in 
+Table~\ref{tab:whitespacechannel}.
+There are areas has no white space channel available in New York and Los Angeles. 
+Austin has only one white space channel available in downtown area.
+The other cities in the table have 2 to 7 white space channels.
+Thus, a heterogeneous network with WiFi channels and few white space channels 
+becomes a practical option for these cities other than a white space wireless network.
 
 
 
@@ -45,9 +66,9 @@ becomes a practical option for these cities.
 \begin{figure}
 \vspace{-0.0in}
 \centering
-\includegraphics[width=74mm]{figures/whitecell}
+\includegraphics[width=84mm]{figures/whitecell}
 \vspace{-0.1in}
-\caption{White Space Model in Dense Area}
+\caption{Heterogeneous WhiteCell Structure}
 \label{fig:systemmodel}
 \vspace{-0.1in}
 \end{figure}
@@ -58,14 +79,12 @@ becomes a practical option for these cities.
 Here, we introduce a heterogeneous network named as WhiteCell with existing WiFi cells and an access point 
 with few number of white space channels as shown in Fig.~\ref{fig:systemmodel}.
 Given a WiFi mesh wireless system with $M$ access points and $N$ users.
-Each of the WiFi cell has access to the white space channels and its own WiFi channel. The reuse of 
-WiFi channels has been discussed in plenty of previous works and it is out of our scope.
-The users of a WiFi cell are associated with an WiFi channel assigned for the access point in the cell or one of 
-the white space channels. 
+The users in each WiFi cell of the network have access to the white space channels and the assigned WiFi channel of the cell. 
+The reuse of WiFi channels has been discussed in plenty of previous works and it is out of our scope.
 There are $F_w$ white space radios is installed on one of the access points to assistant the existing WiFi 
 network. 
-The capacity of each radio $C$ is a equally restrict number of all the channels. There are enough buffer 
-store the traffic demand from the users on each radio. 
+The capacity in clean environment of each radio $C$ is an equally restrict number for all the channels. 
+There are enough buffer store the traffic demand from the users on each radio. 
 The traffic is served in a first-in-first-out (FIFO) scheduling system. 
 In such a network, each user has $1+F_w$ channels to be scheduled. One is the previous in-cell WiFi channel 
 and the white space channels. 
@@ -76,7 +95,7 @@ direction of future research.
 
 
 Instead of assuming the wireless channels are on-off~\cite{bodas2012low} or equally clean, we apply a  
-measurements method to get the achieved channel capacity. The capacity of the channel between the access 
+measurement method to get the achieved channel capacity. The capacity of the channel between the access 
 points and users is noted as a matrix in Eq.~\ref{eq:usercapacity}
 \begin{equation}
 \label{eq:usercapacity}
@@ -97,6 +116,7 @@ the sleeping energy as well as the amount of energy spent on channel/radio switc
 radio will cost equal power in a time unit. Previous work~\cite{niida2010user} shows a user has a 
 certain patience for waiting. The tolerance time varies across the traffic type, such as text information, 
 voice information. To simply the problem, we assume an average value for $W$ of all the users in the system. 
+The smaller tolerance time of the users, the more channel capacity resource is required.
 The system applies a first-come-first-serve schedule. The white space channels are able to split for multiple 
 cells.
 
@@ -173,6 +193,11 @@ Otherwise, $R_i = 0$. The definition is as shown in Eq.~\ref{eq:radio}
 		0 &  Otherwise
 			    \end{array} \right.
 \end{equation}
+
+% Explain the equation
+$P_s$ is the constant standby power consumption of a radio, $P_t$ is the transmit power for the channel capacity 
+assigned of the radio. $\mu$ is the total assigned channel capacity of the radio.
+$R_i(t)$ is the power consumption of the radio in the time slot.
 
 Thus, to reduce the power consumption, we need to minimize $R_i$ for all the radios under the quality of service 
 constraints. 

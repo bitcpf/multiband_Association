@@ -2,7 +2,7 @@
 \subsection{Challenges And Analysis}
 \label{subsec:challenge}
 % Challenges sum
-Prior works model similar multi-channel system as $M/M/m$ queuing system for analyzing~\cite{bodas2012low}.
+Prior works formulate similar multi-channel system as $M/M/m$ queuing system for analyzing~\cite{bodas2012low}.
 However, this system is not able to be formulated as a $M/M/m$ queuing system due to the 
 non-equal capacity of the assigned channel capacity across white space and WiFi channels.
 Thus we first analyze the queuing system and apply previous work in $M/M/m$ queuing theory to 
@@ -12,9 +12,9 @@ generate the solution for such system.
 Without the white space channels, the users in a cell can only access to the WiFi channel assigned for the 
 cell to get service. The large propagation of white space channels offers more options for all the users. 
 The user could either associate with the white space channels or the WiFi channels. 
-Thus, the white space channels could be splited into several cells. 
-The spliting of the white space channels brings more capacity variation of the servers. 
-The white space channel spliting capacity variation and the spectrum capacity variation of cells might remove the 
+Thus, the white space channels could be slitted into several cells. 
+The splitting of the white space channels brings more capacity variation of the servers. 
+The white space channel splitting capacity variation and the spectrum capacity variation of cells might remove the 
 equal service capacity assumption of the system in most scenarios.
 However, the equal server capacity is the pre-request for a general $M/M/m$ queuing system analysis.
 Thus, the $M/M/m$ queuing system of a multi-channel version is not directly applicable for this system model.
@@ -60,21 +60,21 @@ C_r=C*(1-\bar{A})
 % User distribution measurements
 Other than the achieved channel capacity, we also perform in-field measurements of the user mobility footprint. 
 When the total number of the users is a certain value, the user distribution becomes important for wireless network 
-operating. We analyze the dataset from WiEye, an Android application reports the location, velocity and signal 
+operating. We analyze the data set from WiEye, an Android application reports the location, velocity and signal 
 information to leverage the mobility pattern of users during week days. The setup and results are shown in 
 Section~\ref{sec:experiment}.
 
 % analysis
-With thses measurements information, we further analyze the channle capacity allocation for such a system. 
+With these measurements information, we further analyze the channel capacity allocation for such a system. 
 We first investigate the channel capacity allocation in a single cell.
 The users of the the same WiFi cell are in a heterogeneous queuing system with server of 
 WiFi channels and white space channels with service rate $\mu_1,\mu_2,...\mu_{(F_w+1)}$.
 $\mu$ denote the capacity allocated for this cell.
-The white space channel capacity is splited into multiple WiFi cells, thus, the 
+The white space channel capacity is slitted into multiple WiFi cells, thus, the 
 capacity of the white space is usually the minimum channel capacity in a cell.
 Thus, there are three cases of the channel capacity in a single cell. 
 The first scenario is several channels of both WiFi and white space works for the cell and the capacity of some 
-white space channel is several time less than other channel capacity since white space channels are splited 
+white space channel is several time less than other channel capacity since white space channels are slitted 
 for many cells. 
 An example here is in a single cell, the white space channel assigned is equally distributed to two cells, while 
 the WiFi channel works in this cell, thus, the capacity of the WiFi channel is about twice of the white space 
@@ -82,7 +82,7 @@ channel capacity in this cell.
 The second scenario is only the WiFi channel or only part of a single white space channel works 
 for the cell. 
 The third scenario is several channels work for this cell with around equal capacity.
-The fist case is a heterogeneous server queuing system with inequal capacity servers.
+The fist case is a heterogeneous server queuing system with unequal capacity servers.
 The second case is simplified as a $M/M/1$ queuing system. 
 The third case is converted into a $M/M/m$ queuing system.
 
@@ -94,7 +94,7 @@ defined as in Eq.~\ref{eq:actarrivalrate}
 \label{eq:actarrivalrate}
 \lambda_s=D_{cell}/(F_w+1)
 \end{equation}
-$D_{cell}$ is the traffic aggreated from the users in the cell.
+$D_{cell}$ is the traffic aggregated from the users in the cell.
 
 The other parameters are noted from Eq.~\ref{eq:transformation} to~\ref{eq:kvalue}.
 \begin{equation}
@@ -112,8 +112,8 @@ k= \lfloor\frac{\mu_{max}}{\mu_{min}} \rfloor
 \end{equation}
 
 When $k=1$, the system becomes a homogeneous queuing system as in case three. Otherwise,   
-$k\ge2$ the average response time of such heterogeneous system could be represented as in 
-Eq.~\ref{eq:heterresponse}\cite{yu2008transformation}:
+$k\ge2$ the average response time of such heterogeneous system~\cite{yu2008transformation} 
+could be represented as in Eq.~\ref{eq:heterresponse}:
 
 \begin{equation}
 \label{eq:heterresponse}
@@ -134,7 +134,7 @@ $\mu^+$ is the channel capacity of the single channel capacity in queuing system
 
 % Here
 In the third scenario, the system could be treated as a $M/M/m$ queuing system. 
-The average reponse time is calculated as in Eq.~\ref{eq:mmmw}~\cite{gelenbe1998introduction}.
+The average response time is calculated as in Eq.~\ref{eq:mmmw}~\cite{gelenbe1998introduction}.
 \begin{equation}
 \label{eq:mmmw}
 \bar{w} = \frac{1}{\mu^*}(1+\frac{c(m,\rho)}{m(1-\rho)})\approx \frac{1}{\mu^*}\frac{1}{1-\rho^m}
@@ -160,11 +160,10 @@ to approach the minimize power consumption in the system as shown in Algorithm~\
 $N$: Users\\
 $H_{i,j}^f$: Vector of channel capacity\\
 $D$: Traffic Rate\\
-$n$: Path Loss Exponent \\
 $M$: WiFi Cells
 \STATE {Find the WiFi cell with the lowest traffic rate $D$,break the tie with index}
 \STATE {Calculate the power consumption according to Eq.~\ref{eq:heterresponse}~\ref{eq:mm1w}~\ref{eq:mmmw}}
-\IF {If channel resource feasible}
+\IF {If channel resource feasible and exist unserved traffic demand}
 \STATE {List available options}
 \IF {Single channel is the best}
 \STATE Apply half-interval search to find the minimum capacity for the users
@@ -181,30 +180,15 @@ $M$: WiFi Cells
 \STATE Repeat the process for all the cells
 \STATE Calculate the power consumption
 \ENSURE ~~\\
-The power consumption and the maximum waiting time\\
+The power consumption, resource allocation and the maximum waiting time\\
 \end{algorithmic}
 \end{algorithm}
 
-
-% Here, introduce the algorithm
-%Fixme
-We integrate the in-field measured data To answer the design question, we first get the channel capacity from the in-field measurement, then we 
-propose a Greedy Server-side Replace (GSR) algorithm to minimize the power consumption and achieve the 
-performance constraints.
-
-
-
-
-% Fixme the capacity from activity level
-The calculation of channel capacity $H$ will be discussed in Section~\ref{sec:experiment}.
-The algorithm starts to reduce the standby power then the transmitting power for each server.
-
-
-
-
-
-The algorithm output the channel resource allocation to satisfy the waiting 
-time constraint of the system.
+The algorithm input the measurement-based achieved channel capacity, the number of white space channels and the WiFi cells. 
+The white space channels are employed for the cell with less traffic demand to reduce the standby power. The algorithm 
+compare the three configurations of channel capacity and tell the setup with the best power consumption. 
+Further, the process is repeat till all the traffic demand are served or the channel resource has been used up.
+Then output the power consumption and channel allocation of the system.
 
 
 

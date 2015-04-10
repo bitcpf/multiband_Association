@@ -10,66 +10,76 @@ having a far greater propagation range than WiFi bands for similar transmission 
 % Improve existing cells
 Thus, white space bands greatly complements the existing WiFi wireless network with 
 their large propagation range for user mobility. 
-The users of an WiFi access point have the options to associate with either the WiFi channel 
-of the cell or the large propagation white space channels.
 
 % Multi-user diersity
 The users in multiple locations under the coverage of both the WiFi and white space have user 
-diversity which represents the difference of transmission qualities of multiple users due to 
-their variations in transceiver design, geographic location, etc.
+diversity which represents the difference of transmission qualities due to 
+the variations in channel quality, geographic location, interference, etc.
 % Explain the spectral diversity temporal diversity
-The user diversity comes from two types of reason. One is the temporal diversity which 
-is caused by the environment variation. Another is the spectral diversity which represents 
+The user diversity mainly comes from two types of reason. One is the temporal diversity which 
+is caused by the environment variation. The other is the spectral diversity which represents 
 the transmission conditions varies across frequencies. 
 In some moderate number of users, the sum capacity of users increase with the diversity in 
 the system~\cite{gan2014multiple}. 
 
-The larger propagation range of white space channels adapt channel association of users located 
-in large area. When the users distributed in a large area, the temporal diversity and spectral 
-diversity become the key issues in white space applications. 
+The larger propagation range of white space channels is able to adapt channel association of 
+users located in large area. 
+The white space channels are able to serve the users distributed in a large area.
+With both WiFi channels and white space channels, the users of an existing WiFi cell 
+have the options to associate with either the WiFi channel assigned to the cell or the 
+large propagation white space channels covering multiple cells.
+When the users distributed in a large area, the temporal diversity and spectral diversity become 
+key issues in white space wireless network applications. 
 % Extreme cases and the middle of number of channels
 In sparse rural areas, plenty of white space channels are able to deploy new white space network. 
-However, in dense area, few white space channels are available for new network deployment, such as 
-none white space channel is available in New York downtown~\cite{googlespectrum}. The carrier have 
-to use WiFi channels to deploy wireless networks in the dense area without any available white space channel. 
-Other than these two extreme cases, most areas of major cities in the United States have one to eight 
-white space channels~\cite{googlespectrum}. Exploiting these limited white space resource to improve 
-the WiFi network in dense area is a perspective option for wireless networks. 
+However, in dense area, the white space channels are restricted by FCC in a small number.
+For example, there is none white space channel available in New York downtown~\cite{googlespectrum}. 
+Other than the plenty white space channels and none white space channel extreme cases, most areas 
+of major cities in the United States have one to eight 
+white space channels~\cite{googlespectrum}. 
+Since the carrier have deployed WiFi wireless networks in most of the dense areas,
+the white space channels are able to complement the WiFi wireless networks to achieve better 
+performance in coverage, power consumption, etc. Thus, exploiting these limited white space resource 
+to improve the WiFi network in dense area is a perspective option for wireless networks. 
 
 % Power saving, extreme cases
-Moreover, the white space frequencies offer more wireless capacity and convenience of access across large 
-area. When the total traffic demands of the users are relatively low, a single white space channels satisfy 
-all the user. Then, the WiFi radios could be turned off for power saving. On the other side, when the users 
-have highly total traffic demand, all the radios, WiFi and white space, have to be operated to serve the users. 
-However, traffic demands generally come across somewhere between these extremes. Thus, the question comes out, 
-a{\it in what degree the white space help to reduce the power consumptions of an existing WiFi mesh?}
-Especially when the WiFi mesh located in dense area with less white space channel availability.
+The white space frequencies offer not only more wireless capacity but also the convenience of access 
+across large area for the heterogeneous wireless network structure. 
+A single white space channel is able to satisfy all the users in the area when the total traffic demands of 
+the users in the area are relatively low. The WiFi radios in the heterogeneous structure could be turned off 
+for power saving. 
+While when the total traffic demand of the users in the area is relatively high, all the radios in the wireless network 
+have to operate for the service of users.
+However, the amount of traffic demands generally come across somewhere between these two extremes. Thus, the 
+question comes out, {\it in what degree the white space help to reduce the power consumptions of an existing 
+WiFi mesh?} Especially when the WiFi mesh located in dense area with less white space channel availability.
 
 % Work summary 
 In this work, we study the white space resource impacts on mesh network power consumption via queuing theory model.
-We describe the heterogeneous network structure with white space bands and WiFi bands and analyze the 
-system with a queuing model. We analyze the heterogeneous structure to get resource required by the waiting 
-time restriction in multiple scenarios of the structure. We further propose a Greedy Server-side Replace (GSR) 
-algorithm to minimize the power consumption for the heterogeneous network structure. 
+We describe the heterogeneous wireless network structure with both white space bands and WiFi bands. 
+We perform in-field measurement to leverage the channel utility and mobility footprint of Dallas Fort-worth metroplex.
+We analyze the heterogeneous structure under the the waiting 
+time constraint for resource allocation in multiple scenarios via the queuing model. We further propose a greedy 
+to find the resource allocation minimizing the power consumption for the heterogeneous network structure. 
 We then evaluate the algorithm, showing the power consumption gains across sparse and dense areas and 
-analyze the impact of the number of white space and WiFi channel in these representative scenarios.
+analyze the impact of the number of white space and WiFi channels in these representative scenarios.
 % On demand consideration
 
 % Paper contributions
 In particular, the main contributions of our work are as follows:
 \begin{itemize}
 \item We perform 24 hours in-field measurements in neighborhoods, campus, downtown business building, 
-and urban business buildings. Through the measurements, we estimate the achieved channel capacity of 
-these typical area in Dallas area.
-\item We leverage the user mobility footprint through in-filed WiEye measurements of Dallas on weekdays. 
-Through the measurements, we tell the user distribution in multiple types of areas. 
+and urban business buildings. Through these in-field measurements, we estimate the achieved channel capacity of 
+these typical area in north Texas.
+\item We leverage the user mobility footprint through in-filed Android based WiEye measurements of Dallas area on weekdays. 
+Through the measurements analysis, we tell the user distribution in multiple types of areas across 24 hours in weekdays. 
 \item 
-We formulate the heterogeneous wireless system as a queuing system. Based on previous queuing theory works, we 
-analyze the resource relation of the system waiting time. Based on the analyze, we propose a Greedy Server-side Replace 
-(GSR) algorithm to allocate the channel resource to minimize the power consumption.
-\item We perform measurement-driven numerical simulation to analyze various scenarios of channel resource and 
+We formulate the heterogeneous wireless structure as a queuing system. Based on previous queuing theory works, we 
+analyze the resource allocation of the system quality of service in waiting time. Based on the analysis, we propose a 
+Greedy Server-side Replace (GSR) algorithm to allocate the channel resource to minimize the power consumption.
+\item We perform measurement-driven numerical simulations to analyze various scenarios of channel resource and 
 users distribution. Our results shows that the white space bands reduce the power consumption in
-sparse area by up to 512.55\% and 99.57\% in weekdays.
+sparse area by up to 512.55\% in weekdays.
 \end{itemize}
 
 The rest of the paper is organized as follows. We describe the system and formulate the problem in~\ref{sec:problemformulation}.

@@ -9,45 +9,45 @@ Database file #1: whitecell.bib
 Warning--empty journal in friis
 
 Done.
-You've used 25 entries,
+You've used 26 entries,
             3917 wiz_defined-function locations,
-            916 strings with 11154 characters,
-and the built_in function-call counts, 18372 in all, are:
-= -- 1436
-> -- 444
+            919 strings with 11218 characters,
+and the built_in function-call counts, 18663 in all, are:
+= -- 1457
+> -- 445
 < -- 163
-+ -- 249
++ -- 250
 - -- 73
-* -- 869
-:= -- 2695
-add.period$ -- 58
-call.type$ -- 25
-change.case$ -- 22
+* -- 877
+:= -- 2743
+add.period$ -- 60
+call.type$ -- 26
+change.case$ -- 23
 chr.to.int$ -- 393
-cite$ -- 26
-duplicate$ -- 1330
-empty$ -- 1517
+cite$ -- 27
+duplicate$ -- 1359
+empty$ -- 1552
 format.name$ -- 91
-if$ -- 4246
+if$ -- 4311
 int.to.chr$ -- 0
-int.to.str$ -- 25
-missing$ -- 231
-newline$ -- 95
+int.to.str$ -- 26
+missing$ -- 237
+newline$ -- 98
 num.names$ -- 22
-pop$ -- 568
+pop$ -- 587
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 1381
+skip$ -- 1407
 stack$ -- 0
-substring$ -- 939
-swap$ -- 1077
+substring$ -- 940
+swap$ -- 1091
 text.length$ -- 32
 text.prefix$ -- 0
 top$ -- 5
 type$ -- 0
 warning$ -- 1
 while$ -- 85
-width$ -- 27
-write$ -- 244
+width$ -- 28
+write$ -- 251
 (There was 1 warning)
