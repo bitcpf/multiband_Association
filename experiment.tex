@@ -1,22 +1,18 @@
 \section{Experiment and Analysis}
 \label{sec:experiment}
+% Clean the words connect the model to the results
 
-In this section, we introduce the in-field measurements experiments 
-, the evaluation of the heterogeneous wireless system 
-and analysis of the results.
+In this section, we introduce our in-field measurement experiments, evaluate our heterogeneous wireless system, and analyze the resulting impact on various network parameters.
 
 % Subsec Experiment design
 \subsection{In-field Measurements}
 \label{subsec:measurements}
 
-We perform in-field measurements in typical areas to find the channel state variation across 
-time and the user mobility patterns among the areas.
-% 24 hours measurement introduction
-We chose neighborhoods, campus, downtown business office and 
-urban business office to perform long term 24 hours measurements on weekdays. 
-The locations we chosen are located in Downtown Dallas, a university campus in Dallas, 
-a business in Dallas urban area and an apartment on north Dallas. 
-The locations where we collected measurements are shown in Fig.~\ref{fig:measurement_map}.
+In-field measurements are very useful in understanding real world environmental and temporal channel effects. 
+When it comes to heterogeneous networks that can be configured over numerous channels with different spectral activity, such information is vital in determining an optimal network configuration. 
+To this end, we collected spectral user activity measurements in several typical areas including metropolitan, campus, and suburban locations in Dallas, TX, as seen in Fig.~\ref{fig:measurement_map}. 
+They were gathered over 24 hours on weekdays in distinct areas to offer insight into differing channel types. 
+From these measurements, we extract channel state variation over time, location information, and user mobility patterns present in each area.
 
 \begin{figure}
 \vspace{-0.0in}
@@ -28,27 +24,20 @@ The locations where we collected measurements are shown in Fig.~\ref{fig:measure
 \vspace{-0.1in}
 \end{figure}
 
-In each of the location, we left our equipment running to measure the channel state for 24 hours during 
-weekdays. 
+In each of the location, we left our equipment running to collect channel state information measurements for 24 hours during weekdays. 
 % Experiment equipment
-We employ a Rohde \& Schwarz FSH8 portable spectrum works from 100 KHz to 8 GHz. 
-The portable spectrum analyzer is controlled by a Python script on a laptop to measure 
-the received signal strength.
+For hardware, we employ a Rohde \& Schwarz FSH8 portable spectrum that operates in frequencies from 100 KHz to 8 GHz. 
+This portable spectrum analyzer is controlled by a Python script on a laptop that records the received signal strength over time.
 % Data normalize 
-To the best of our knowledge, there is no readily available mobile, multiband antenna from
-450 MHz to 5.2 GHz on the market. Thus, we use a 700-MHz mobile antenna to perform in-field
-measurements. We then normalize the mobile antenna performance across bands with indoor 
-experimentation. To do so, we use a Universal Software Radio Peripheral (USRP) N210 to 
-generate signals at 450 MHz, 800 MHz, and 2.4 GHz. We feed the USRP signals directly
-to a spectrum analyzer and adjust the configuration of USRP to make the received signal 
-strength the same as the 5.2 GHz signal from Gateworks 2358 with a XR5 radio. Then, we connect 
-the signal source to a fixed multiband antenna (QT 400 Quad Ridge Horn Antenna) and measure the
-received signal at a fixed distance with the 700 MHz antenna and antennas for different bands
-to obtain the antenna loss for each band. We adjust the received signal strength
-collected via the 700-MHz mobile antenna according to the normalization.
+To the best of our knowledge, there is no commercial readily available, mobile, multiband antenna from 450 MHz to 5.2 GHz on the market. 
+Due to this limitation, we use a 700-MHz mobile antenna to perform in-field measurements and normalize the mobile antenna gain across all bands with indoor experimentation. 
+To do so, we use a Universal Software Radio Peripheral (USRP) N210 to generate signals at 450 MHz, 800 MHz, and 2.4 GHz. 
+We feed these signals directly to the spectrum analyzer and adjust the configuration of USRP to make the received signal strength the same as the 5.2 GHz signal from Gateworks 2358 with a XR5 radio. 
+We then connect the signal source to a fixed multiband antenna (QT 400 Quad Ridge Horn Antenna) and measure the received signal at a fixed distance with the 700 MHz antenna and antennas for different bands to obtain the antenna loss for each band. 
+We adjust the received signal strength collected via the 700-MHz mobile antenna according to this normalization.
 We use $-85 dBm$ as a threshold in the activity level calculation for the normalized data.
 
-% Introduce how to calculate the capacity
+% Introduce how to calculate the achieved capacity
 % Explain multiband and activity level
 When wireless devices operate in WiFi bands, the channel separation is relatively 
 small (e.g., 5 MHz for the 2.4 GHz band). As a result, many works assume that
@@ -67,14 +56,9 @@ to the environmental characteristics (e.g., urban or rural and downtown or resid
 of the deployment location.
 
 
-Through the measured data set, we calculate the activity level via Eq.~\ref{eq:actdef}.
-The activity level is calculated in one minute time window.
-We average the activity level in 30 minutes across 24 hours.
-% Need to discuss the \mu mapping with these measurements stuff
+Through the measured data set, we are able to calculate the activity level via Eq.~\ref{eq:actdef}.
+We calculate a single activity level over a one minute time window, followed by averaging these activity levels every 30 minutes across the 24 hour data set duration.
 
-
-
-% FIXME how to show the data
 \begin{table*}
 \centering % centering table 
 \begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|c|c|c|} % creating 13 columns 
@@ -96,7 +80,7 @@ We average the activity level in 30 minutes across 24 hours.
 %&&12:00-23:00&  11.88 &  12.27 &  12.36 &  12.05 &  12.15 &  14.00&  13.32 &  12.29&  11.38 &  11.55&  12.92 &  13.16 \\ 	
 %\cline{2-15}	
 %&\multirow{2}{*}{2.4 GHz}	
-%&0:00-11:00 &  29.08 &  29.15 &  29.49 &  28.93 &  29.01 &  28.86&  28.84 &  29.53&  29.03 &  28.74&  29.89 &  29.15 \\ 	
+%&0:00-11:00 &  29.08 &  29.15 &  29.49 &  28.93 &  29.01 &  28.86&  28.84 &  29.53&  29.03 &  28.74&  34.89 &  29.15 \\ 	
 %\cline{3-15}	
 %&&12:00-23:00&  28.60 &  29.61 &  29.44 &  28.55 &  28.05 &  28.62&  28.74 &  28.93&  28.26 &  27.73&  28.19 &  29.85 \\ 	
 %\cline{2-15}	
@@ -168,17 +152,19 @@ We average the activity level in 30 minutes across 24 hours.
 %\cline{3-15}	
 %&&12:00-23:00&  25.29 &  26.49 &  26.70 &  26.77 &  25.31 &  24.59&  24.78 &  25.91&  25.67 &  24.73&  24.73 &  25.21 \\ 	
 
-%Subtable here 
+%Subtable here
+&& \multicolumn{12}{c|}{Activity Level (Percentage)}  \\
+\hline
 \multirow{2}{*}{Downtown 450 MHz}	
 &0:00-11:00 &  22.09 &  21.27 &  22.28 &  22.47 &  21.65 &  21.68&  22.37 &  22.16&  23.12 &  22.73&  22.01 &  22.54 \\ 	
 \cline{2-14}	
 &12:00-23:00&  21.80 &  20.86 &  21.80 &  22.54 &  22.35 &  22.61&  22.45 &  21.58&  22.18 &  23.09&  22.11 &  22.09 \\ 	
-\cline{1-14}	
+\hline
 \multirow{2}{*}{Campus 450 MHz}	
 &0:00-11:00 &  20.29 &  21.56 &  21.41 &  22.52 &  23.12 &  21.97&  21.65 &  21.63&  21.87 &  21.22&  21.17 &  21.39 \\ 	
 \cline{2-14}	
 &12:00-23:00&  22.33 &  22.88 &  22.28 &  21.65 &  22.49 &  22.16&  21.32 &  22.35&  21.56 &  21.75&  21.75 &  20.45 \\ 	
-\cline{1-14}	
+\hline
 \multirow{2}{*}{Neighborhoods 800 MHz}	
 &0:00-11:00 &  15.72 &  16.30 &  16.33 &  15.72 &  16.54 &  14.48&  14.62 &  14.48&  15.68 &  15.03&  15.60 &  16.33 \\ 	
 \cline{2-14}	
@@ -187,143 +173,138 @@ We average the activity level in 30 minutes across 24 hours.
 \end{tabular}    
 \caption{Part of Activity Level in Multiple Locations} % title name of the table 
 \label{tab:activitymeasurement}    
-\vspace{-0.3in}
+\vspace{0.3in}
 \end{table*}    
 
 
 % Data analysis
 % List part of the data
-Through the activity level results, we observe that the activities of 450 MHz in the air has almost the same patterns across all 
-the four measured areas. The large propagation area of 450 MHz influence the areas simultaneous and the 450 MHz activities are 
-perform regularly on weekdays.
-Neighborhood area has more activity in 800 MHz than other types of areas. But the 800 MHz activity levels are relatively lower than 
-other bands in all the areas.
-The WiFi 2.4 GHz channel of neighborhoods has more activity in the night while the downtown area has more activity in the day time.
+Due to the limited space, the full list of measurements are available upon request, but part of the measurement results are listed in Table~\ref{tab:activitymeasurement}.
+Through these activity level results, we can see several interesting differences between bands and locations.
+The activity levels on the 450 MHz band have almost the same patterns across each of the four measured areas. 
+The large propagation area of the relatively low 450 MHz frequency can influence the areas simultaneously and the patterns seen play out regularly on weekdays.
+The suburban neighborhood area has more activity in 800 MHz than other types of areas, but the 800 MHz activity levels are relatively low compared to the other bands in all areas.
+The WiFi 2.4 GHz channel in suburban neighborhoods has more activity in the night while the downtown area has more activity in the day time.
 The campus has more WiFi activities in the morning than the afternoon and night. 
-Part of the measurements results are list in Table~\ref{tab:activitymeasurement}.
-Due to the limited space, the full list of measurements are available upon request.
-We integrate the measurements result into our numerical simulation of GSR algorithm later in this section.
-
-
+We integrate these activity level results into our numerical simulation using our GSR algorithm later in this section.
 
 
 % Mobility pattern measurements
-To identify the user mobility pattern, we leverage the data from WiEye database and find the user locations across time.
+To identify user mobility patterns, we leverage the data from WiEye application database to analyze user locations across time.
 % WiEye introduction
-WiEye application created for the data collection is currently available for download and usage via the Google Android 
-Market under the name WiEye. The application offers WiFi access points connection quality in both graphical and tabular 
-form. All data collection is done in the background, either continuously while the user is running the application or 
-periodically if the user has opted in to background data collection to SMU research. 
-The data collected has been approved by the Southern Methodist University Institutional Review Board, a human subjects 
-research committee,ensuring that all ethical precautions have been taken in collecting data from the users of our 
-application.
+The WiEye application created for the data collection is currently available for download and usage via the Google Android Market. 
+Our application offers connection quality information for WiFi access points in both graphical and tabular form as a download incentive. 
+All data collected is done so as a background process, either continuously while the user is running the application or periodically if the user has opted in to background data collection for SMU research. 
+Additionally, the data collected has been approved by the Southern Methodist University Institutional Review Board, a human subjects research committee, ensuring that all ethical precautions have been taken in collecting user data with our application.
 
 
+% Wieye cluster
+User mobility data has a direct impact on the power consumption and resource allocation of a wireless network.
+% other cities range Here, discuss the wieye data process, 
+For our user mobility analysis, we pull data from the WiEye database in several Texas cities, including Houston, Dallas, San Antonio, and Austin in weekdays from October 1st 2014 to March 20th 2015.
+For accuracy concerns, we removed all data points with reported speeds above $30km/h$.
+We first query the all Dallas measurements in the range restricted latitudinally from 
+$32.7471 S$ to $33.2153 S$, and longitudinally from $97.1677 W$ to $96.5600 W$.
+We then superimpose the same area from Dallas over Houston, Austin, San Antonio according to the difference of latitude and longitude between the center of the cities as defined by Google maps.
+We split each area into 36 grid districts as shown in Fig~\ref{fig:wieye_map}, quantize time into six 4-hour slots per day, and record in each grid the number of unique users according to the device ID records from the WiEye database.
+We compress the data set into one weekday since WiEye reports the measurements with an uncertain gap and the data set has a limited number of users.
 
-% Here, discuss the wieye data process, 
-We choose the data from WiEye database according to the GPS location. The data we chosen from
-Dallas area, including downtown, urban, SMU campus and neighborhood area. We note the SMU campus 
-area size as the unit, find the same size of downtown area and urban area. The rest of the chosen 
-locations are counted as neighborhoods. The size of neighborhoods area is about $2.8$ of campus 
-area. The data set is generated from Oct. 1st 2014 to March 20th 2015. 
-We track the identified 538 users from the data set in different types of areas. 
-The number of users located in these area are counted according to the GPS and further converted into 
-the percentage each hour. The percentage distribution of users across these areas during a weekday is shown 
-in Fig.~\ref{fig:wieyeprocess}
+
+\begin{figure}[h]
+\vspace{-0.0in}
+\centering
+\includegraphics[width=74mm]{figures/wieye_cluster_map}
+\vspace{-0.1in}
+\caption{WiEye District Grids}
+\label{fig:wieye_map}
+\vspace{-0.1in}
+\end{figure}
+
+%\input{user_mob_austin}
+%\input{user_mob_dallas}
+%\input{user_mob_houston}
+%\input{user_mob_sanantonio}
+
+
+\input{new_test_table}
+
+The results of Dallas user amount are shown in Table~\ref{table:cluster}, but due to space limitations, the results of other cities are available upon request.
+% Time slot analysis
+From the data set, we identify up to 597, 292, 219, 187 users in Dallas, Austin, San Antonio and Houston, respectively.
+There are several interesting findings in user numbers that we can take away from the data set.
+The number of user peaks happen at the time slot between $16:00-20:00$ in Dallas, Austin, and San Antonio, the exception being Houston during the $8:00-12:00$ slot.
+The lowest number of users occur at the time slot between $0:00-4:00$ in Houston, Austin, San Antonio while between $4:00-8:00$ in Dallas.
+% Most and least flutcate
+The tile that has the most fluctuation in Dallas is C2 (bold) with a 600\% swing and is a residential area with multiple highway intersections.
+F4 (underlined) has the least fluctuation with 60\% swing and includes part of a downtown and dense urban area of Dallas. 
+% Tile analysis
+% Downtown
+The number of users in grid F4 of Dallas fluctuate less than other areas list in the table.
+A similar phenomenon is seen in the Houston measurements. 
+Since we have few data points collected from the area in Austin and San Antonio, it is not clear of the fluctuation in downtown of these two cities.
+% Highway
+District A2 and B2 of Dallas both have part of the lake, but B2 always has more users than A2, most likely caused by the highway in grid B2. 
+Similar highway influences can be seen in D5, C5. 
+Grids C3 and D3 have more users than other girds in column 3 across almost nearly all time since they have highway intersections.
+% Industry
+In Austin, we find that more than 70\% users are located in 3 tiles, C2, C3, and C4 (bracketed). 
+There are several companies located in these grids, such as Samsung semiconductor, which seem to attract most of our users in Austin.
+With the limited number of measurements, it is hard to leverage all the factors of user mobility. 
+In the future, more patterns are able to be leverage clearly from the WiEye application's ongoing data collection.
+
+
+\subsection{Experiments, Results, and Analysis}
+\label{subsec:experimentsetup}
+
+
+There are many factors that influence the performance of wireless networks. 
+Here, we try to leverage the elements based on our in-field measurements and GSR algorithm in a WhiteCell structure.
+First we investigate the impacts of channel quality and user mobility pattern on power consumption.
+In the measurements shown in~\ref{subsec:measurements}, the best channel quality has a $14.48\%$ activity level, and the worst has a $34.89\%$ activity level. 
+The area most variable in activity has 600\% user variation and the least fluctuation area has 40\% fluctuation. 
+We have identified four scenarios based on the data: A) good channel and high user fluctuation, B) bad channel and high user fluctuation, C) good channel and low user fluctuation, and D) bad channel and low user fluctuation.
+
+% Setup
+We apply our GSR algorithm with the measurements using a 7 cells WhiteCell topology over a 7 $km^2$ area to leverage channel quality and user mobility information.
+We assume the user mobility varies with a constant slope from the lowest amount of users to the highest amount of users. 
+For our analysis, all the cells are in considered to be the same size as a single WiFi cell. 
+The white space channels in our measurements have more than 3 times propagation range than WiFi channels even with the lowest frequency WiFi channel and the highest white space channel.
+Additionally, all users are uniformly distributed throughout the cells. 
+Thus, in the high fluctuation configuration, the user distribution varies from $2.32\%$ to $14.3\%$. 
+To contrast the high fluctuation configuration, we set the low fluctuation scenario to vary form $6.94\%$ to $9.72\%$, maintaining the same average user distribution across time, $8.33\%$, as the high fluctuation scenario. 
+We assume that only a single white space channel is available in the simulation.
+% Time population, user traffic demand and radios capacity setup
+The standby power consumption of a radio is $500$ watt and transmit power is $1$ watt per Mbps.
+The population density of the area is set as 2000, the same as Dallas.
+We set the traffic demand per user as 0.2 Mbps and assume 30\% of the users will activate their device (ie. the take rate is 30). 
+The tolerance response time of users is $15\ ms$. 
+We adopt an 802.11n maximum data rate of 600 Mbps for all radios. 
+
 
 \begin{figure}
 \vspace{-0.0in}
 \centering
-\includegraphics[width=84mm]{figures/wieyeprocess}
+\includegraphics[width=84mm]{figures/act_mob_combination}
 \vspace{-0.1in}
-\caption{User Distribution across Time}
-\label{fig:wieyeprocess}
-\vspace{-0.1in}
-\end{figure}
-
-From the measurements results, we could find the distribution increase from 9:00 AM in the morning till 
-3:00 PM in the afternoon in downtown, urban business area and campus. 
-This match the most of the work schedule.
-The peak of neighborhoods is around 6:00 PM in the afternoon and 9:00 AM in the morning. 
-The reason could be the users are looking for breakfast in the morning before go to work.
-We input the user mobility pattern into our power consumption numerical simulation.
-
-
-
-\subsection{Experiments, Results and Analysis}
-\label{subsec:experimentsetup}
-
-% Virtual city setup
-We apply our GSR algorithm with the measurements in a virtual city to investigate white space band 
-impacts on power consumption. 
-The virtual city in our experiment includes a downtown area, a school campus area, two urban business 
-areas and three neighborhood areas. 
-All the areas are in the same size with a single WiFi cell. 
-The white space channels has more than 3 times propagation range than WiFi channels 
-even with the lowest frequency WiFi channel and the highest white space channel.
-The white space radios are located in the center of the virtual city cover all the users in the 
-four types of areas.
-We assume the residents in the city is a constant number which could be calculated through the 
-population distribution according to the 2010 U.S. Census~\cite{uscensus}. 
-The channel variation of spectrum is setup according to the channel state measurements
-and the user mobility from the measurements results of WiEye introduced in 
-Subsection~\ref{subsec:measurements}.
-
-% Time population, user traffic demand and radios capacity setup
-The transmit power of radios are equal and with the same clean channel capacity. 
-The standby power consumption of a radio is 500 watt and transmit power is 1 watt per Mbps.
-We lookup population distribution from the US census 2010 to calculate the users in the 
-virtual city. We set the demand requested per user as 0.5 Mbps and assume 30\% of the users will 
-activate their device (ie. the take rate is 30). The tolerance time of users is $30\ ms$ in most of 
-the simulations. We adopt an 802.11n maximum data rate of 600 Mbps for all the radios. 
-For the single white space channel setup, the channel is from the 800 MHz. For two white space channels, 
-one is 450 MHz, the other one is from 800 MHz. For three white space channels setup, two of them are from 
-800 MHz and one from 450 MHz.
-
-% Investigate time
-We first investigate the power consumption variation across time with the population distribution 
-as $2000 ppl/km^2$ with the measurements setup. The results across 24 hours of the virtual city 
-is shown in Fig.~\ref{fig:timevary}
-
-\begin{figure}[hpt]
-\vspace{-0.0in}
-\centering
-\includegraphics[width=84mm]{figures/timevary}
-\vspace{-0.1in}
-\caption{Power Consumption across Time}
-\label{fig:timevary}
+\caption{Channel and User Mobility: A(Low Activity Level, High User Fluctuation),B(High Activity Level, High User Fluctuation)
+,C(Low Activity Level, Low User Fluctuation),D(High Activity Level, Low User Fluctuation)}
+\label{fig:act_mob_combination}
 \vspace{-0.1in}
 \end{figure}
 
-We observe that the WiFi power consumption keeps constant in most case. That because the WiFi 
-propagation range restrict all the radios have to be on operating to serve the users. While the 
-white space radios could adapt the user non-uniform distribution or user mobility better. When the 
-user distribution changes fast at 9:00 AM, the white space configurations could reduce the power 
-consumption by about 20\% of the previous user distribution. Three white space channels could 
-reduce almost half of the power consumption in the simulation. 
-The power consumption gain is mainly from turning off the radios.
-% uniform distribution does not have a great gain
-When the users are uniform distributed, the power consumption may increase due to the splitting of
-white space channels. The queuing theory concludes that a single faster server is better than 
-multiple slower server have the same capacity. When the users are uniform like distributed, the 
-white space channels may be divided into several sub-channels which lower the performance. 
-From the measurements numerical simulation, one white space channel could reduce the power consumption 
-by 24.57\% during 24 hours. Two white space channels could reduce by 46.27\% and three white space channels 
-could reduce by 67.40\% relatively. 
-As the number of white space channel increase, the power consumption gains per channel will become a 
-constant since there is enough channel capacity to satisfy the users.
-Thus, according to the result, we could design the network with white space channels to adapt the user 
-mobility patterns with affordable power consumption as well as apply the 
-white space channels as complement resource for the existing WiFi infrastructure.
+From the simulation results shown in Fig.~\ref{fig:act_mob_combination}, the minimum power consumption in high user fluctuation (A and B) is lower than in low user fluctuation (C and D) by 75.07\% and 69.22\%, respectively.
+The average power consumption in high user fluctuation (A and B) is lower than the low user fluctuation (C and D) by 16.62\% and 19.61\%, respectively, but the peak power consumption is higher than in low user fluctuation by 7.68\% and 2.57\%, respectively. 
+When the number of users is lower, the white space radio will replace more than one WiFi or cellular radios to reduce the power consumption, thus the total and average power consumption is reduced by using less radios with larger propagation.
+In contrast, with a higher activity level, the offloading system has to spend more power to achieve the same quality of service due to the reduction in capacity. 
 
 
-
-% Different cities
-Further, we study the tolerance waiting time $W$ of users impacts on the power consumption. 
-We keep the population distribution as $2000\ ppl/km^2$ and 11:00 AM channel state and 
-user distribution.
-The tolerance waiting time is set from $5\ ms$  to $90\ ms$ with $5\ ms$ steps. The results 
-are shown in Fig.~\ref{fig:delayvary}.
+% Different delay
+We also study the impact of user tolerance response time, $W$, on power consumption. 
+We keep the population distribution fixed at $2000\ ppl/km^2$ and take the channel state and user distribution present in the 11:00 AM time slot for the simulation.
+For the single white space channel setup, the channel is taken from the 800 MHz band. 
+For two white space channels, one is 450 MHz, the other one is from 800 MHz. 
+Finally, for three white space channels setup, two of them are from the 800 MHz band and one from the 450 MHz band.
+The tolerance response time varied from $5\ ms$ to $90\ ms$ using $5\ ms$ steps. 
  
 % Delay variation
 \begin{figure}[hpt]
@@ -337,28 +318,18 @@ are shown in Fig.~\ref{fig:delayvary}.
 \end{figure}
 
 % Fit for long delay tolerance,if small delay require more resource
-The results that the less quality of service in waiting time, the less power consumption is required.
-As the tolerance waiting time increase, the power consumption of both WiFi and heterogeneous configuration 
-gains power saving. The WiFi configuration gains the power saving mainly from the reduction of channel 
-capacity delivery. The white space configuration gains the power saving from both the reduction of channel 
-capacity delivery and the sleeping radios. Thus, there are some sharp reduction in the white space setup 
-in the numerical simulation results due to the radio turning off.
-The power consumption could be reduced by 170.24\% with three white space channels under the tolerance waiting 
-time $90\ ms$.
-When the tolerance waiting time is more than $50\ ms$ there is no great difference between the two white space 
-channels setup and three white space channels setup. 
-As discussed in previous section, most of the major cities in the U.S. has restriction of white space channels.
-Thus, the network carriers is able estimate the quality of service they can offer according to the resource they 
-own, such as the number of white space channels, the power supply, etc.
+From the results shown in Fig.~\ref{fig:delayvary}, we see that the lower the requirement on response time, the less power consumption is required.
+As the tolerance response time increase, the power consumption of both WiFi and heterogeneous configuration decreases monotonically. 
+The WiFi configuration's power saving mainly stems from the reduction of channel capacity delivery. 
+The white space configuration, however, saves power from both the reduction of channel capacity delivery as well as radios turning off. 
+With this in mind, we can see sharp reduction in power consumed using the white space configuration in the numerical simulation results due to radios turning off; power consumption shows reduction by 170.24\% with three white space channels under the tolerance response time $90\ ms$.
+When the tolerance response time is more than $50\ ms$, there is no great difference between the two white space channels setup and three white space channels setup. 
+As discussed in previous section, most of the major cities in the U.S. has restriction of the number of white space channels, thus the network carrier is able to estimate the quality of service they can offer according to the resources available, such as the number of white space channels, the power supply, etc.
 
 
-
-We involve the previous measurement work of channel state in multiple cities in DFW metroplex area to study the 
-population density variation in white space network design~\cite{pcuiwinmee}.
-We choose the 
-The achieved channel capacity is mapping to the population distribution as in~\cite{pcuiwinmee}. The user 
-distribution is set as our measurements in 11:00 AM with $30\ ms$ tolerance waiting time.
-The results are shown in Fig.~\ref{fig:populationvary}.
+Further, we utilize previous measurement work of channel state in multiple cities of DFW metroplex area to study the population density variation in white space network design~\cite{pcuiwinmee}.
+For this analysis, we use the achieved channel capacity that maps to the population distribution. 
+Similar to the previous experiment, we set the user distribution according to the percentage of our measurements in 11:00 AM with $15\ ms$ tolerance response time.
 
 % Not sentivitv to population? need more resultes
 \begin{figure}[hpt]
@@ -371,33 +342,69 @@ The results are shown in Fig.~\ref{fig:populationvary}.
 \vspace{-0.1in}
 \end{figure}
 
-As the population increase, all the configuration of network cost more power to serve the users.
-The gains of a single white space channel reach the peak in 50 $ppl/km^2$ as 512.55\%. 
-And the users are able to be satisfied by only one white space channel, the increasing of white space 
-channels does not gains in power consumption. The same result happens for 100 $ppl/km^2$ with more than 
-two white space channels. The number of white space channels reaches the constant power consumption 
-increase with the population. For 50 $ppl/km^2$ is one white space channel while 100 $ppl/km^2$ needs two 
-white space channels. Also, the gain of a single white space channels decrease as the number of white space 
-channels increase. Such as in 1000 $ppl/km^2$, the first white space channel gains 70\% of power consumption, 
-the second channel adding to the system gains only 47.98\% and the third one gains only 2.26\%.  
-Thus, when the white space channels are limited, split them into multiple combination of WiFi cells 
-could increase the power consumption other than put them in one WiFi virtual city.
+From the results shown in Fig.~\ref{fig:populationvary}, we see that as the population increases, all the network configurations require more power to serve the users.
+The power saving gains of a single white space channel reach their peak, 512.55\%, at a user density of 50 $users/km^2$, and the users are able to be satisfied by only one white space channel. 
+Increasing the number of white space channels does not provide any additional reduction in power consumption. 
+We see a similar capping out at a user density of 100 $users/km^2$ with two white space channels available; the number of white space channels reaches a point of consistent power consumption increase with the population. 
+At a user density of 50 $users/km^2$ this point can be reached using one white space channel while 100 $users/km^2$ needs two white space channels. 
+Also, the gain of a single white space channel decrease as the number of white space channels increases.
+This diminishing returns effect on the gain can be seen at a user density of 1000 $users/km^2$: the first white space channel gains 70\% of power consumption, the second channel added to the system gains only 47.98\% and the third gains only 2.26\%. 
+Therefor, when the number of white space channels are limited, splitting the channels to serve more WiFi cells could decrease power consumption, though the power saved decreases as the population density increase. 
 
 
+In practice, an area that has a stable channel state and constant user mobility does not exist, thus in-field measurements are required to infer the expected performance in the real world.
+To evaluate the system performance with a more practical configuration, we query multiple types of areas in Dallas to find the percentage of user activity across time.
+In a similar fashion to our prior in-field measurement database query, we pull measurements from downtown areas, urban areas, and suburban neighborhoods around Dallas in areas of fixed size equal to the area of SMU's campus.
+Specifically, we use urban area measurements from the eastern of SMU's campus and from North Park mall. 
+Suburban neighborhood area measurements were taken from the Highland Park residential area north of campus, from a residential area north of North Park, and from The Village apartment complex east of campus. 
+The number of users located in these area are counted according to the GPS locations the distribution of the percentage of users across these areas during a given weekday is recorded in Fig.~\ref{fig:wieyeprocess}. 
 
 
+\begin{figure}
+\vspace{-0.0in}
+\centering
+\includegraphics[width=84mm]{figures/wieyeprocess}
+\vspace{-0.1in}
+\caption{User Distribution across Time}
+\label{fig:wieyeprocess}
+\vspace{-0.1in}
+\end{figure}
 
-% Robust
+The measurements are put in a WhiteCell configuration as previously described, assuming the residents in the city is held constant. 
+The channel variation across the spectrum is set up according to both the channel state measurements as well as the user mobility from the measurements results of WiEye discussed in 
+Subsection~\ref{subsec:measurements}. The results across 24 hours of the simulated city 
+are shown in Fig.~\ref{fig:timevary}
+
+\begin{figure}[hpt]
+\vspace{-0.0in}
+\centering
+\includegraphics[width=84mm]{figures/timevary}
+\vspace{-0.1in}
+\caption{Power Consumption across Time}
+\label{fig:timevary}
+\vspace{-0.1in}
+\end{figure}
+
+In this simulation, we observe that the WiFi power consumption remains constant in cases when the users are more uniformly distributed. 
+This is likely because the WiFi radios must be operating to serve the users due to the propagation range limitation. 
+The white space radios have the advantage of adapting to the non-uniform user distribution and  mobility. 
+When the user distribution changes fast at 9:00 AM, the white space configuration can reduce the power consumed by approximately 20\% compared to the previous user distribution. 
+Three white space channels reduce power consumption by nearly half in our results. 
+As mentioned earlier, the reduction in power consumption is mainly caused by the ability to turn off the radios when the white space channels are replacing the WiFi channels.
+% uniform distribution does not have a great gain
+When the users are uniformly distributed, the power consumption may increase due to the division of white space channels. 
+The queuing theory concludes that {\it a single, faster server is better than multiple slower servers with the same total capacity}. 
+When the users are close to uniformly distributed, the white space channels may be divided into several sub-channels in the algorithm which make the performance worse. 
+From the numerical simulation, one white space channel could reduce the power consumed by 24.57\% on average over 24 hours. 
+Additionally, our results show that using two white space channels reduces power consumption by 46.27\% and using three white space channels reduces power consumption by 67.40\%. 
+Similarly to the previous result, as the number of white space channel increases, the power consumption gains per channel will become constant since there is enough channel capacity to satisfy the users.
+According to this result, we can design the network to utilize white space channels, enabling user mobility adaptation and complementing the existing WiFi infrastructure.
 
 
 % Sum
 % WiFi fit for constant user set up
-We study the white space impacts on the WiFi mesh networks. The application of white space channels reduce the 
-power consumption of the system most of the time. The white space channels are good at adapting user mobility 
-with less power consumption. Through the numerical simulation, putting the limited white space channels as complementary 
-resource for the existing wireless network is able to reduce the power consumption of the system or increase the 
-quality of service. When the wireless resource is above a threshold, the gain of white space becomes relatively 
-small in the system.
-
-
-% White space fit for moving users and could be used as supplimanet
+In the numerical simulation, we leverage the impacts of channel quality, user mobility, quality of service, and population density on the network offloading structure. 
+Further we investigate the performance in a virtual city to simulate the expected in-field performance. 
+Through this simulation, we show that using white space channels can greatly reduce the power consumption of such offloading systems in most scenarios. 
+From our results, we also see the advantage of using white space channels in adapting user mobility to reduce power consumption. 
+Finally, we show how the limited number of white space channels can be a complementary resource for existing WiFi wireless networks, reducing the power consumption and improving the achievable user quality of service. 

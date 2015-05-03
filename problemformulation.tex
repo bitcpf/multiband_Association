@@ -20,21 +20,17 @@ P_r=P_t+G_t+G_r+10n \log_{10}\left( \frac{\lambda}{4\pi R}\right)
 Here, $n$ varies according to the aforementioned environmental 
 factors with a value ranging from two to five in typical outdoor 
 settings~\cite{rappaport}.
-% Tell the propagation of white space is much larger than wifi
-Thus, the channels of low frequency white space bands propagates further than the high frequency WiFi 
-bands with the same RSSI threshold, transceiver settings according to Eq.~\ref{eq:friis}. 
 % White spcae is good out resource to improve the service of Wifi cell
-The propagation range of low frequency white space channels is times of WiFi channels, for instance, 
-450 MHz channels has more than 12 times propagation range as 5 GHz channels via Friis model. Thus a 
-single white space access point is possible to serve an area up to hundreds times of a WiFi access point. 
-The larger propagation of white space channels is potentially to be applied for reduction of network deployment 
-cost~\cite{pcuiwinmee}, adaptation of vehicular dynamic access~\cite{chen2011feasibility}, and improvement 
+The propagation range of low frequency white space channels is many times larger than high frequency WiFi channels, for instance, 
+450 MHz channels has more than 12 times the propagation range of 5 GHz channels via Friis model. Thus, with a 
+single white space access point is possible to serve an area up to hundred times of a WiFi access point. 
+The large propagation of white space channels can potentially be applied for the reduction of network deployment 
+cost~\cite{pcuiwinmee}, the adaptation of vehicular dynamic access~\cite{chen2011feasibility}, and improvement 
 of network capacity~\cite{bahl2009white}.
-However, previous works focus on the application of plenty white space channels resource or point to point 
-communication require small amount of white space resource. 
+However, previous works that focus on the application of many white space channel resources or point to point 
+communication requiring a small amount of white space resource fail to investigate heterogeneous networks 
+with limited white space resources.
 
-
-%FIMXE insert table tell the number of white space channels in US cities
 \begin{table*}[hpt]
 \centering % centering table 
 \begin{tabular}{|l|c|c|c|c|c|c|c|} % 
@@ -49,18 +45,22 @@ White space channels & 0 & 0 & 2 & 7 & 3 & 1& 3 \\
 \vspace{-0.3in}
 \end{table*}    
 
-In wireless network design, as discuss in previous works, the more wireless channel resource means the better 
-performance.
-Unfortunately, FCC restricts the number of white space channels in most dense populated areas due to the existing 
-TV broadcasting application. The minimum number of white space channels in major cities in the U.S is listed in 
-Table~\ref{tab:whitespacechannel}.
-There are areas has no white space channel available in New York and Los Angeles. 
-Austin has only one white space channel available in downtown area.
-The other cities in the table have 2 to 7 white space channels.
-Thus, a heterogeneous network with WiFi channels and few white space channels 
-becomes a practical option for these cities other than a white space wireless network.
-
-
+In wireless network design, 
+more wireless channel resources bring more flexibility and better performance.
+White space frequency is the new opportunity for wireless networks. 
+However, the FCC restricts the number of white space channels in most dense urban areas 
+to protect existing television broadcasts. 
+The minimum number of white space channels in some major cities of the U.S are listed in 
+Table~\ref{tab:whitespacechannel}~\cite{googlespectrum}.
+In New York and Los Angeles, some districts have zero white space channel available.
+Part of Austin has only one white space channel available in dense urban areas.
+Most of the other cities in the table have 2 to 7 white space channels.
+Thus, it is unfeasible to implement white space wireless networks 
+with limited resources in these dense urban areas.
+% WiFi cells exist
+Moreover, most of the dense areas already have deployed wireless networks. 
+Our proposed wireless system leverages the existing infrastructure, adding additional
+frequency efficiency and lower energy usage.
 
 % Power saving
 \begin{figure}
@@ -70,70 +70,81 @@ becomes a practical option for these cities other than a white space wireless ne
 \vspace{-0.1in}
 \caption{Heterogeneous WhiteCell Structure}
 \label{fig:systemmodel}
-\vspace{-0.1in}
+\vspace{-0.3in}
 \end{figure}
-
 
 % Give the model and assumption
 % B channel; N user; M AP;
-Here, we introduce a heterogeneous network named as WhiteCell with existing WiFi cells and an access point 
-with few number of white space channels as shown in Fig.~\ref{fig:systemmodel}.
-Given a WiFi mesh wireless system with $M$ access points and $N$ users.
-The users in each WiFi cell of the network have access to the white space channels and the assigned WiFi channel of the cell. 
-The reuse of WiFi channels has been discussed in plenty of previous works and it is out of our scope.
-There are $F_w$ white space radios is installed on one of the access points to assistant the existing WiFi 
-network. 
-The capacity in clean environment of each radio $C$ is an equally restrict number for all the channels. 
-There are enough buffer store the traffic demand from the users on each radio. 
-The traffic is served in a first-in-first-out (FIFO) scheduling system. 
-In such a network, each user has $1+F_w$ channels to be scheduled. One is the previous in-cell WiFi channel 
-and the white space channels. 
+Here, we introduce a heterogeneous network structure named WhiteCell with existing wireless 
+cells and reusing the central access point with few white space radios as shown in 
+Fig.~\ref{fig:systemmodel}.
+The cells are deployed via high frequency cellular or WiFi, which we refer to as WiFi cells 
+later on.
+Given a mesh wireless system with $M$ cells and access points and $N$ users.
+The white space radios are installed on the access point in the central cell.
+The large propagate white space channels in the system cover all the existing cells while 
+each cell has its own wireless resource previously assigned other than the white space resource.
+Thus, the users of each cell have access to the white space channels and the assigned single cell  
+channel. 
+The reuse of WiFi and cellular channels has been discussed in plenty of previous works and it is 
+out of our scope.
+$F_w$ is the white space radios installed on the central cell access point.
+The white space channels are able to be split for multiple cells access point in the system.
+We assume the capacity in an environment that is clean of all the radios is $C$. 
+There is enough buffer to store the traffic coming from the users on each access point.
+The traffic aggregated at the access point could be transferred through the single cell 
+frequency resources or the shared white space resources.
+The traffic is served in a first-in-first-out (FIFO) scheduling strategy.
+In this structure, the traffic of each cell could be transferred by $F_w+1$ channels.
+The one is the single cell wireless channel and the others are the white space channels.
 We assume the users in the same mesh cell are in a single interference domain. 
-Considering the limited number of white space channels in dense area and the fact spatial reuse 
-of white space will make the problem considerably more challenging, we will remains an interesting 
-direction of future research. 
+Considering the limited number of white space channels in dense areas and considering spatial reuse 
+of white space makes the problem considerably more challenging, it remains an interesting 
+direction for future research. 
 
-
-Instead of assuming the wireless channels are on-off~\cite{bodas2012low} or equally clean, we apply a  
-measurement method to get the achieved channel capacity. The capacity of the channel between the access 
-points and users is noted as a matrix in Eq.~\ref{eq:usercapacity}
+Instead of assuming the wireless channels are on-off~\cite{bodas2012low} or have equal capacity, 
+we apply a measurement driven estimation to get the achieved channel capacity. The capacity of the 
+channel between the access points and each user is noted as a matrix in Eq.~\ref{eq:usercapacity}
 \begin{equation}
 \label{eq:usercapacity}
 H_{i,j}^f(t)= G(\zeta,t),i \in M, j\in N, f \in (F_M+F_w) 
 \end{equation} 
 $\zeta$ represents the in-field measured historical data and dynamic sensing information.
-We use a context-aware method to estimate the $j$ user capacity $H_{i,j}^f(t)$ to an access point 
-$i$ on channel $f$. The users in a single cell has the same channel status. We assume the channel 
-capacity is flat during a time slot. The switching time is negligible in the system.
+A context-aware method is applied to estimate the $j$th user capacity $H_{i,j}^f(t)$ to an access point 
+$i$ on channel $f$. The users in a single cell have the same channel status. We assume the channel 
+capacity is flat during a certain time slot. The switching time is negligible in the system.
 The calculation of achieved channel capacity is introduced in~\ref{subsec:experimentsetup}. 
-The traffic demand arrive at a user as a Poisson process, with the vector noted as 
+The traffic demand of a user obey Poisson process, with the vector noted as 
 $\bm{D(t)} = [D_1(t),D_2(t),...D_N(t)]$ and the sum rate $D(t) = \sum\limits_{i=1}^N D_i(t)$. 
 The rate $D(t)$ is the aggregate rate of data generated from all users. 
 
-% Buffer and tolerance time
-During a time slot, the unscheduled radios remain in sleep mode to save energy. Also we ignore 
-the sleeping energy as well as the amount of energy spent on channel/radio switching. An operating 
-radio will cost equal power in a time unit. Previous work~\cite{niida2010user} shows a user has a 
-certain patience for waiting. The tolerance time varies across the traffic type, such as text information, 
-voice information. To simply the problem, we assume an average value for $W$ of all the users in the system. 
-The smaller tolerance time of the users, the more channel capacity resource is required.
-The system applies a first-come-first-serve schedule. The white space channels are able to split for multiple 
-cells.
+% tolerance time, energy model
+During a time slot, the unscheduled radios remain in sleep mode to save energy. We also ignore 
+the sleeping energy as well as the amount of energy spent on channel or radio switching. An operating 
+radio will cost equal standby power per unit time. Previous human factor work~\cite{niida2010user} 
+shows users have a certain patience for response. 
+The tolerance time of users varies across the traffic type, such as text information, 
+voice and video. To simply the problem, we assume an average value for tolerance response time $W$ 
+of all the users in the system. 
+With the same number of traffic demand, more channel capacity offers more data rate which reduce 
+the response time.
+Thus, the longer the tolerance time required by the users, the more channel capacity resource is 
+required.
 
 \subsection{Problem Formulation}
 \label{subsec:problem}
 
-We formulate the system introduced in~\ref{subsec:model} as a discrete-time queuing system as shown in 
-Fig.~\ref{fig:flowconfig}. 
-The channels are represented as servers in the queuing system. 
-% Do we need it?
+We formulate the heterogeneous wireless network system introduced in~\ref{subsec:model} as a 
+discrete-time queuing system shown in Fig.~\ref{fig:flowconfig}. 
+The channels are represented as servers in the queuing model. 
 Table.~\ref{tab:notation} summarizes the notation used in this work. 
-The system has $F_w$ white space channels, $F_M$ WiFi channels in total and $N$ users.
-Thus, the queuing system has $N$ queues and $F_M+F_w$ servers connecting by time-varying 
-channels $H^*(N,F_M+F_w)$.
+In the system, there are $F_w$ white space radios and $M$ cells. 
+$F_M$ represents the single cell resource radios allocated to $M$ cells. 
+Multiple cells may share the same single cell resource, but there is no overlap of their service areas.
+Thus, the queuing system has $M$ queues of the cells and $F_M+F_w$ servers in total connecting 
+by time-varying channels $H^*(M,F_M+F_w)$.
 
 \input{notation}
-
 
 \begin{figure}
 \vspace{-0.0in}
@@ -145,45 +156,52 @@ channels $H^*(N,F_M+F_w)$.
 \vspace{-0.1in}
 \end{figure}
 
-Let matrix \{$A_{i,j}(t),i\in (F_M+F_w), j\in N$\} denote the associate meets the 
-tolerance constraint as shown in Eq.~\ref{eq:associate_def}.
+The matrix \{$A_{i,j}(t),i\in (F_M+F_w), j\in M$\} denotes the wireless resource association
+as shown in Eq.~\ref{eq:associate_def}.
 %where $A_{i,j}^b = 1$ denotes user $j$ is scheduled with access point $i$ on channel $b$.
 \begin{equation}
 \label{eq:associate_def}
  A_{i,j}(t) = \left\{ 
 	  \begin{array}{l l}
-	    1   &  if\ D_{j\in N},\ is\ associated\ with\ \\
-		& channel\ i \in (F_M+F_w) \\
+	    1   &  if\ D_{j\in M},\ is\ associated\ with\ \\
+		& radio\ i \in (F_M+F_w) \\
 		0 &  Otherwise
 			    \end{array} \right.
 \end{equation}
 
-The queuing system keeps the expected waiting time of the system $w$ less than the tolerance threshold $W$ 
-as shown in Eq.~\ref{eq:timeconstraint}
+To keep the quality of service, the queuing system restricts the expected response time of 
+the system $w$ to no more than the tolerance threshold $W$ as shown in Eq.~\ref{eq:timeconstraint}
 \begin{equation}
 \label{eq:timeconstraint}
 E[w]\le W
 \end{equation}
 
-With the intuition, when the total traffic demand of the users in the system are relatively small, a single 
-white space channel could achieve the quality of service for the users. Thus all the WiFi radios could be turned 
-into sleep mode for power saving. 
-On the other side, as the traffic demand increase with the number of users or the demand per user, we need 
-to increase the channel resource as servers in the system to qualify the user waiting time tolerance requirements. 
-Moreover, when the users are distributed non-uniformly, the white space channels are able to deliver more capacity for 
-the cells with more users to balance the system load without new infrastructure. 
-The flexibility of white space channels offers new opportunity for network design.
-To apply these white space advantages, the question {\it how much power we could save via dividing the white space 
-capacity into the WiFi cells?} has to be addressed in this system.
+% Extreme examples
+When the total traffic demand of the users in the system are relatively small, 
+the channel capacity of a single white space channel could achieve the quality of 
+service in response time for all the users. 
+In this scenario, all cell radios could be switched to sleep mode for power saving. 
+On the other hand, as the traffic demand increase with the number of users or the demand per 
+user, the channel resources need to be increased as the number servers in the queuing system increment 
+to meet the user response time tolerance requirements. Thus, in this extreme case, all the radios 
+have to keep operating to provide the appropriate quality of service. 
+Moreover, when the users are distributed non-uniformly, the long propagated white space channels 
+are able to deliver more capacity for the cells with more traffic to balance the system load 
+without adding new infrastructure. 
+The flexibility of white space channels offers new opportunity for power saving and 
+offer load adaptation in network design.
+To apply these white space advantages, the question {\it can we save power by exploiting 
+the white space capacity with existing cells?} has to be addressed in this system.
 
-In this work, we focus on the analysis on the power consumption saving of the heterogeneous wireless system. 
-To model the power consumption of the system, we count the power consumption of each operating radio via 
-standby and transmitting power consumption.
-We assume the sleeping standby power consumption is negligible. 
+In this work, we focus on analyzing the power savings for the heterogeneous 
+WhiteCell system. 
+To model the power consumption of the system, we sum the power consumption of each operating 
+radio in two power consumption categories: standby and transmitting.
+We assume the sleeping standby power consumption is negligible as well as the switching power consumption. 
 We define $R_i$ represents the radios status in the system, $i\in {F_w,F_M}$. 
-When $R_i$ is working in WiFi channels $F_M$ or white space channels $F_w$, $R_i$ denotes the power consumption 
-with the standby and transmitting cost. 
-Otherwise, $R_i = 0$. The definition is as shown in Eq.~\ref{eq:radio}
+The value of $R_i$ denotes the power consumption of the radio for standby and transmitting.
+When the radio is in sleeping mode, $R_i = 0$. 
+The definition is as represented in Eq.~\ref{eq:radio}.
 
 \begin{equation}
 \label{eq:radio}
@@ -195,17 +213,22 @@ Otherwise, $R_i = 0$. The definition is as shown in Eq.~\ref{eq:radio}
 \end{equation}
 
 % Explain the equation
-$P_s$ is the constant standby power consumption of a radio, $P_t$ is the transmit power for the channel capacity 
-assigned of the radio. $\mu$ is the total assigned channel capacity of the radio.
-$R_i(t)$ is the power consumption of the radio in the time slot.
+$P_s$ is the standby power consumption of a radio which is a constant value, $P_t$ is the 
+unit transmit power consumption of the assigned channel capacity. 
+$\mu$ is the allocated channel capacity of the radio.
+$R_i(t)$ is the power consumption of the radio during the time slot.
 
-Thus, to reduce the power consumption, we need to minimize $R_i$ for all the radios under the quality of service 
-constraints. 
-Our goal, to minimize the power consumption is represented in Eq.~\ref{eq:objective}:
+Thus, to reduce the power consumption of the system, it could be 
+implemented via minimizing the sum of $R_i$ under the quality of service constraints. 
+The objective is to minimize the power consumption of the system is represented in Eq.~\ref{eq:objective}:
 \begin{equation}
 \label{eq:objective}
 R^*(t) = \min{\{\sum\limits_{i=1}^{(F_M+F_w)} R_{i}}(t)\}
 %\xi = \min{\{\sum\limits_{t}^{t+T}\sum\limits_{i}^{(F_M+F_w)} R_{i}}(t)\}
 \end{equation}
-$R^*$ represent the minimum operating radios power consumption required for the system. 
+$R^*$ represent the minimum operating power consumption required of the system. 
+The allocated resources $\mu$ could be adjusted to approach the minimum power consumption 
+in the model. 
+According to the queuing quality of service model and power consumption model, 
+we further analyze the heterogeneous WhiteCell system and propose our greedy solution.
 

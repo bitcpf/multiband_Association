@@ -144,4 +144,11 @@ J.~Li, J.~J. Chen, K.~Agrawal, C.~Lu, C.~Gill, and A.~Saifullah, ``Analysis of
   \emph{Real-Time Systems (ECRTS), 2014 26th Euromicro Conference on}.\hskip
   1em plus 0.5em minus 0.4em\relax IEEE, 2014, pp. 85--96.
 
+\bibitem{ggmap}
+\BIBentryALTinterwordspacing
+D.~Kahle and H.~Wickham, ``ggmap: Spatial visualization with ggplot2,''
+  \emph{The R Journal}, vol.~5, no.~1, pp. 144--161, 2013. [Online]. Available:
+  \url{http://journal.r-project.org/archive/2013-1/kahle-wickham.pdf}
+\BIBentrySTDinterwordspacing
+
 \end{thebibliography}

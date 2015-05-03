@@ -1,28 +1,48 @@
 \begin{abstract}
 % White space
-The FCC has reapportioned spectrum from TV white spaces for the purposes of large-scale Internet 
-connectivity via wireless topologies of all kinds. 
-% Limitations
-These frequency resource offers additional channel capacity and propagation flexibility for network design.
-The far greater range of these lower carrier frequencies are especially critical in user mobility 
-adaptation, where high levels of aggregation could dramatically lower the power consumption of 
-network operating. 
-However, the white spaces resource distribution is restricted by FCC contrast to the population density, 
-dense area has few white space channels.
-Thus, leveraging the range of spectrum across user mobility becomes a critical issue for the operating of 
-heterogeneous data networks with WiFi and limited white space bands. 
-% Work
-In this paper, we present a feasibility analysis for a heterogeneous network resource allocation to reduce 
-the power consumption via queuing theory approach.
-In particular, we study the spectrum utility across multi-bands and the user mobility across a weekday in 
-typical environment of the Dallas-Fort Worth metroplex through measurements. 
-Moreover, we propose a Greedy Server-side Replace (GSR) algorithm to reduce the power consumption with 
-white space channels application. 
-In doing so, we find that networks with white space bands reduce the power consumption by up to 512.55\% in sparse 
-rural area over WiFi-only solutions via measurements driven numerical simulation. In more populated areas. we find 
-an power consumption reduction on average across 24 hours by 24.57\%, 46.27\%,67.40\% over WiFi only network with 
-one to three white space channels respectively.
-We further investigate the quality of service requirements impacts on power consumption across the number of channels.
-We find that the power consumption reduction is up to 150.89\% with three white space channels in dense areas with 
-relaxed required waiting time.
+Cellular networks have addressed the multi-fold increase in traffic demand through
+various approaches from increasingly smaller cells to offloading demand to unlicensed
+spectrum, such as WiFi and TV white spaces. The latter approach has a tremendous 
+cost benefit as unlicensed hardware can be co-located with existing cellular infrastructure.
+However, in these situations where demand is the greatest, WiFi spectral 
+activity could be high and the total number of available white space
+channels are often inversely proportional to the population due to the existence of TV 
+broadcast channels. Moreover, the additional hardware induces a higher energy demand 
+of the cell site. In this work, we perform extensive spectral measurements of unlicensed
+bands in a major metropolitan area and crowd-source user mobility to consider
+potential swings in network load. Using these measurements, we design a queuing-based 
+approach to serve these network demand dynamics in an energy-efficient manner according
+to differing qualities of service. In particular, we perform in-field experimentation 
+of the diurnal spectrum utility across white space (54-806 MHz) and WiFi (2.4 and 5.8 GHz) 
+bands in typical settings across the Dallas-Fort Worth metroplex. We also consider mobility 
+patterns from Android-based crowd-sourced measurements in four major Texas cities to infer the 
+change in traffic demand induced by users. Driven by both data sets, we propose a 
+Greedy Server-side Replace (GSR) algorithm to estimate the power consumption for the use 
+of unlicensed bands for cellular offloading. In doing so, we find that networks with white 
+space bands reduce the power consumption by up to 512.55\% in sparse rural areas over 
+WiFi-only solutions via measurements driven numerical simulation. In more dense areas, 
+we find power consumption reduction across a 24-hour period to be, on average, 
+24.57\%, 46.27\%, 67.40\% over WiFi-only offloading with one to three white space channels, 
+respectively. We further investigate the quality of service requirements impact on power 
+consumption. Finally, we find that the power consumption reduction is up to 150.89\% 
+over a WiFi-only configuration with three white space channels in dense urban areas with 
+a relaxation of waiting times.
 \end{abstract}
+
+%The FCC has reapportioned spectrum from TV white spaces for the purposes of 
+%large-scale Internet connectivity via wireless topologies of all kinds. 
+%These low frequency resource offers propagation flexibility for network design 
+%as well as additional channel capacity.
+%The far greater range of these lower carrier frequencies are especially critical 
+%in user mobility adaptation, where high levels of aggregation could dramatically 
+%lower the power consumption of network operating. 
+%% Limitations
+%However, the white spaces resource application is restricted by FCC contrast to 
+%the population density, dense area has few white space channels.
+%Thus, leveraging the range of spectrum across user mobility becomes a critical 
+%issue for the operating of heterogeneous data networks with WiFi and limited white 
+%space bands. 
+%% Work
+%In this paper, we present a feasibility analysis for a heterogeneous network 
+%resource allocation to reduce the power consumption via a queuing theory approach.
+
