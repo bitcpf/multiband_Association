@@ -1,6 +1,20 @@
 \section{System, Assumptions and Problem Formulation}
 \label{sec:problemformulation}
 
+\begin{table}[t]
+\centering % centering table 
+\begin{tabular}{|l|c|c|c|c|c|c|c|} % 
+\hline %\hline % inserting double-line 
+ & San Francisco & Seattle & Houston & Austin & Dallas \\
+\hline %\hline % inserting double-line 
+Channels & 2 & 7 & 3 & 1& 3 \\
+\hline %\hline % inserting double-line 
+\end{tabular}
+\caption{Number of White Space Channels in Major Cities} % title name of the table 
+\label{tab:whitespacechannel}
+\vspace{-0.3in}
+\end{table}
+
 % Background and problem model
 \subsection{System and Assumptions}
 \label{subsec:model}
@@ -21,46 +35,14 @@ Here, $n$ varies according to the aforementioned environmental
 factors with a value ranging from two to five in typical outdoor 
 settings~\cite{rappaport}.
 % White spcae is good out resource to improve the service of Wifi cell
-The propagation range of low frequency white space channels is many times larger than high frequency WiFi channels, for instance, 
-450 MHz channels has more than 12 times the propagation range of 5 GHz channels via Friis model. Thus, with a 
-single white space access point is possible to serve an area up to hundred times of a WiFi access point. 
+The propagation range of low-frequency white space channels is many times larger than high-frequency WiFi channels. For instance, 
+450 MHz has more than 12 times the propagation range of 5 GHz according to the Friis model. Thus, a 
+single white space access point can cover an area up to hundred times of a WiFi access point (if the network was not capacity constrained). 
 The large propagation of white space channels can potentially be applied for the reduction of network deployment 
-cost~\cite{pcuiwinmee}, the adaptation of vehicular dynamic access~\cite{chen2011feasibility}, and improvement 
-of network capacity~\cite{bahl2009white}.
-However, previous works that focus on the application of many white space channel resources or point to point 
-communication requiring a small amount of white space resource fail to investigate heterogeneous networks 
-with limited white space resources.
-
-\begin{table*}[hpt]
-\centering % centering table 
-\begin{tabular}{|l|c|c|c|c|c|c|c|} % 
-\hline %\hline % inserting double-line 
-City & New York & Log Angeles & San Francisco & Seattle & Houston & Austin & Dallas \\
-\hline %\hline % inserting double-line 
-White space channels & 0 & 0 & 2 & 7 & 3 & 1& 3 \\
-\hline %\hline % inserting double-line 
-\end{tabular}    
-\caption{Number of White Space Channels in Major Cities} % title name of the table 
-\label{tab:whitespacechannel}    
-\vspace{-0.3in}
-\end{table*}    
-
-In wireless network design, 
-more wireless channel resources bring more flexibility and better performance.
-White space frequency is the new opportunity for wireless networks. 
-However, the FCC restricts the number of white space channels in most dense urban areas 
-to protect existing television broadcasts. 
-The minimum number of white space channels in some major cities of the U.S are listed in 
-Table~\ref{tab:whitespacechannel}~\cite{googlespectrum}.
-In New York and Los Angeles, some districts have zero white space channel available.
-Part of Austin has only one white space channel available in dense urban areas.
-Most of the other cities in the table have 2 to 7 white space channels.
-Thus, it is unfeasible to implement white space wireless networks 
-with limited resources in these dense urban areas.
-% WiFi cells exist
-Moreover, most of the dense areas already have deployed wireless networks. 
-Our proposed wireless system leverages the existing infrastructure, adding additional
-frequency efficiency and lower energy usage.
+costs~\cite{pcuiwinmee}, adaptation of vehicular dynamic access~\cite{chen2011feasibility}, or improvement 
+of network capacity via additional channel resources~\cite{bahl2009white}.
+However, previous works that focus on the application of many white space channel resources or point-to-point 
+communication requiring a small amount of white space resources often fail to investigate the joint use of WiFi and white space bands with their respective advantages and disadvantages.
 
 % Power saving
 \begin{figure}
@@ -68,30 +50,47 @@ frequency efficiency and lower energy usage.
 \centering
 \includegraphics[width=84mm]{figures/whitecell}
 \vspace{-0.1in}
-\caption{Heterogeneous WhiteCell Structure}
+\caption{WhiteCell Structure}
 \label{fig:systemmodel}
 \vspace{-0.3in}
 \end{figure}
 
+In wireless network design, a wider range of carrier frequencies allows greater 
+flexibility and potentially better performance.  White space frequency bands are a relatively
+new opportunity for wireless data networks which have yet to be fully deployed and exploited.
+However, the FCC restricts the number of white space channels in most dense urban areas 
+to protect existing television broadcasts. 
+The minimum number of white space channels in some major cities of the U.S are listed in 
+Table~\ref{tab:whitespacechannel}~\cite{googlespectrum}.
+In New York and Los Angeles (not listed), some districts have zero white space channel available.
+Part of Austin has only one white space channel available in dense urban areas.
+Most of the other cities in the table have 2 to 7 white space channels.
+Thus, it is infeasible to implement white space wireless networks 
+with limited resources in these dense urban areas.
+% WiFi cells exist
+Moreover, most of the dense areas already have deployed wireless networks. 
+Our proposed wireless system leverages the existing infrastructure, adding additional
+frequency efficiency and lower energy usage.
+
 % Give the model and assumption
 % B channel; N user; M AP;
-Here, we introduce a heterogeneous network structure named WhiteCell with existing wireless 
-cells and reusing the central access point with few white space radios as shown in 
-Fig.~\ref{fig:systemmodel}.
-The cells are deployed via high frequency cellular or WiFi, which we refer to as WiFi cells 
-later on.
-Given a mesh wireless system with $M$ cells and access points and $N$ users.
-The white space radios are installed on the access point in the central cell.
-The large propagate white space channels in the system cover all the existing cells while 
-each cell has its own wireless resource previously assigned other than the white space resource.
-Thus, the users of each cell have access to the white space channels and the assigned single cell  
-channel. 
-The reuse of WiFi and cellular channels has been discussed in plenty of previous works and it is 
-out of our scope.
-$F_w$ is the white space radios installed on the central cell access point.
+Here, we introduce a wireless network structure named WhiteCell that leverages an existing
+cell site but additionally uses WiFi and white space radios. We assume that each cell contains 
+a cellular and WiFi transmitter. However, due to the range of white space transmitters, we 
+assume that the central cell can cover all six surrounding adjacent cells with at least
+one white space transmitter (as shown in Fig.~\ref{fig:systemmodel}), forming a WhiteCell. 
+We assume that these seven smaller cells that compose one WhiteCell can operate independently
+of surrounding WhiteCells due to spatial reuse. For our analysis, we will consider up to 
+three white space transmitters and channels are available per WhiteCell.
+The $N$ users that exist in the WhiteCell network architecture has $M$ access points 
+equipped with WiFi and cellular capabilities and $M/7$ cells equipped white space capabilities. 
+%The reuse of WiFi and cellular channels has been discussed in plenty of previous works and it is 
+%out of our scope.
+$F_w$ is the number of white space radios installed on the central cell's access point.
 The white space channels are able to be split for multiple cells access point in the system.
-We assume the capacity in an environment that is clean of all the radios is $C$. 
-There is enough buffer to store the traffic coming from the users on each access point.
+We assume the capacity in an environment of each the radios is $C$ if the channel is free
+of spectral activity and reduced according to the percentage of time the channel is in use. 
+We assume that sufficient memory space exists to buffer traffic to the users from each access point.
 The traffic aggregated at the access point could be transferred through the single cell 
 frequency resources or the shared white space resources.
 The traffic is served in a first-in-first-out (FIFO) scheduling strategy.
@@ -134,7 +133,7 @@ required.
 \subsection{Problem Formulation}
 \label{subsec:problem}
 
-We formulate the heterogeneous wireless network system introduced in~\ref{subsec:model} as a 
+We formulate the wireless network system introduced in~\ref{subsec:model} as a 
 discrete-time queuing system shown in Fig.~\ref{fig:flowconfig}. 
 The channels are represented as servers in the queuing model. 
 Table.~\ref{tab:notation} summarizes the notation used in this work. 
@@ -153,7 +152,7 @@ by time-varying channels $H^*(M,F_M+F_w)$.
 \vspace{-0.1in}
 \caption{System Model}
 \label{fig:flowconfig}
-\vspace{-0.1in}
+\vspace{-0.3in}
 \end{figure}
 
 The matrix \{$A_{i,j}(t),i\in (F_M+F_w), j\in M$\} denotes the wireless resource association
@@ -193,7 +192,7 @@ offer load adaptation in network design.
 To apply these white space advantages, the question {\it can we save power by exploiting 
 the white space capacity with existing cells?} has to be addressed in this system.
 
-In this work, we focus on analyzing the power savings for the heterogeneous 
+In this work, we focus on analyzing the power savings for the  
 WhiteCell system. 
 To model the power consumption of the system, we sum the power consumption of each operating 
 radio in two power consumption categories: standby and transmitting.
@@ -230,5 +229,5 @@ $R^*$ represent the minimum operating power consumption required of the system.
 The allocated resources $\mu$ could be adjusted to approach the minimum power consumption 
 in the model. 
 According to the queuing quality of service model and power consumption model, 
-we further analyze the heterogeneous WhiteCell system and propose our greedy solution.
+we further analyze the WhiteCell system and propose our greedy solution.
 

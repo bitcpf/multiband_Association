@@ -1,26 +1,39 @@
 \section{Introduction}
 \label{sec:introduction}
 %  Multiband background
-With the ubiquity of mobile devices, the growth on-the-go bandwidth needs such as streaming video and social media, and the rise of Internet-of-Things technologies, cellular network providers have been forced to address multi-fold increases in traffic demand.
-To meet this increasing demand, cellular carriers have shifted towards smaller cells and greater levels of offloading of user traffic to unlicensed frequency bands. In addition to the use of available WiFi channels, recent FCC changes have allowed the use of the white spaces of UHF TV bands broadband services for data networks.
+Cellular network providers have been forced to address multi-fold increases in traffic demand due to such factors as the ubiquity of mobile devices, the growth in on-the-go bandwidth needs such as streaming video and social media, and the rise of Internet-of-Things technologies.
+To meet this increasing demand, cellular carriers have shifted towards smaller cells and greater levels of offloading of user traffic to unlicensed frequency bands. In addition to the use of available WiFi channels, recent FCC changes have allowed the use of the white spaces of UHF bands formerly used exclusively for TV broadband services to now be used for data networks.
 These white space bands operate in available channels from 54-806 MHz, allowing far greater propagation range than WiFi bands for similar transmission powers~\cite{balanis2012antenna}.
 However, data communication on the white space
 spectrum is only allowed when TV broadcast stations are not present, making
 the availability of white space channels inversely proportional to user population. Moreover, the co-location of unlicensed hardware with cellular hardware has implications on energy expenditure and ongoing network costs.
 
+Unlicensed frequency bands have a wide range of propagation characteristics and
+policy differences. For the same transmission characteristics such as transmission power and
+antenna gain, the white space spectrum allows a propagation range of multiple 
+times that of WiFi spectrum. The increased range of white spaces can be beneficial for 
+low population densities ({\it e.g.}, rural areas) since the user demand of a large area 
+could be served by a single tower. However, for high population densities ({\it e.g.}, 
+dense urban areas) there are two issues that could make WiFi a more desirable option.  
+First, the greater spatial reuse of WiFi can offer higher demand levels to be served. 
+Second, in dense areas where user traffic demand is generally the highest, there are 
+relatively few white space channels available.  For example, there are no white space 
+channels available in downtown New York City~\cite{googlespectrum}. In most major cities 
+in the United States, however, one to eight white space channels are 
+available~\cite{googlespectrum}.
+
 %FIXME: close related work should go here with points of contrast leading to our work summary
 % Previous works focus on existing technology other than unlicensed frequency
-Previous works focus on the offloading among cellular, WiFi and other existing wireless networks~\cite{singh2013offloading}.
-However, white space frequency is brand new resouce for wireless networks.
-The perspective performance of white space spectrum has not been fully investigated.
+Unlicensed white space resources have previously been discussed as a WiFi-like resource~\cite{bahl2009white}.
+In particular, solutions are actively being sought for the use of white spaces in data networks across the US and Europe~\cite{lei2009ieee,van2011uhf}.
+Most of these works focus on spectrum sensing and opportunistic access as opposed to cellular offloading.
+Previous cellular offloading works focus on the switching times and performance improvements for cellular, WiFi, and other wireless technologies~\cite{singh2013offloading}.
+However, up to this point, the performance of white space spectrum in cellular offloading has not been fully investigated.
 % Channel quality and user mobility:
-Many existing works focus on reducing power consumption and some bussiness model has been proposed~\cite{aijaz2013survey}.
-~\cite{han2011mobile} has shown the offloading strategy will reduce the power consumption through singal strength sensing 
-among cellular, WiFi and users.
-~\cite{vereecken2011power} discuss the general power consumption strategy.
-However, these works fails to consider the large scale channel variation and user mobility impacts on the wireless networks.
-Lacking quantization of the perspective factors, the benefit of the carriers are limited. 
-
+Many works on mobile data offloading have focused on reducing the power consumption, and business models have been proposed~\cite{aijaz2013survey}.
+For example, Han et al.~\cite{han2011mobile} have shown an offloading strategy that reduces the power consumption through signal strength sensing among cellular and WiFi users.
+More general power saving strategies have also been explored~\cite{vereecken2011power}.
+However, these works do not consider the large-scale channel variation and user mobility impacts on the capacity and power consumption of the offloaded network.
 
 %JC: I commented the following out because it was repetitive and/or too detailedfor the first two paragraphs of the introduction..
 %With the ability for unlicensed radio hardware to be co-located with existing cellular hardware, the heterogeneous white space and WiFi data networks have the potential for drastic improvements the capacity of cellular networks without the need for additional infrastructure to be built.
@@ -45,37 +58,40 @@ Lacking quantization of the perspective factors, the benefit of the carriers are
 %With a moderate number of users, the performance of users increase with the diversity in the system~\cite{gan2014multiple}.  
  
 % Thesis Paragraph
-In a heterogeneous network with both WiFi and white space channels, the white space frequencies offer not only more wireless capacity but also the convenience of access across large area. 
-When the total traffic demands of the users in the service area are relatively low, the capacity of a single white space channel is able to satisfy all the users. 
-Thus, some of the WiFi radios in the heterogeneous network could be turned off to limit power consumption. 
-Similarly, when the total traffic demands of the users in the area are extremely high in all the WiFi mesh cells, all the radios in the wireless network have to operate simultaneously to satisfy the users.
-However, the amount of traffic demands fluctuates both spatially and temporally, making traffic profiling for any given radio, as well as optimal radio power manipulation, a difficult task.
-To gain a better understanding of these time dependent properties in spectral usage, we gather numerous spectrum measurements from the unlicensed band and crowd-source user mobility measurements. 
-Additionally, we propose a novel Greedy Server-side Replace (GSR) algorithm for power estimation for use in unlicensed white space cellular offloading.
-Using these measurements along with our proposed energy consumption estimation algorithm, we show that by exploiting the available white space channels to compliment existing WiFi networks, we can drastically reduce power consumption in the heterogeneous wireless network.
+%In wireless networks that use both WiFi and white space channels, the white space frequencies offer not only more wireless capacity but also the convenience of access across large area. 
+%When the total traffic demands of the users in the service area are relatively low, the capacity of a single white space channel is able to satisfy all the users. 
+%Thus, some of the WiFi radios in the wireless network could be turned off to limit power consumption. 
+%Similarly, when the total traffic demands of the users in the area are extremely high in all the WiFi mesh cells, all the radios in the wireless network have to operate simultaneously to satisfy the users.
+%However, the amount of traffic demands fluctuates both spatially and temporally, making traffic profiling for any given radio, as well as optimal radio power manipulation, a difficult task.
 
 %% Work summary 
-%In this work, we study the impact white space resources on mesh network power consumption via queuing theory model.
-%We describe the heterogeneous wireless network structure with both white space and WiFi bands. 
-%We perform in-field measurements to leverage the channel utility and mobility footprint of Dallas Fort-worth metroplex.
-%We analyze the heterogeneous structure under the the waiting time constraint for resource allocation in multiple scenarios via the queuing model. 
-%We further propose a greedy algorithm to find the resource allocation that minimizes the power consumption for the heterogeneous network structure. 
-%We then evaluate the algorithm, showing the power consumption gains across sparse and dense areas and analyze the impact of the number of white space and WiFi channels in these representative scenarios.
+In this work, we perform measurements via spectral wardriving and crowdsourced user 
+mobility to provide a measurement-driven characterization of residual channel capacity
+and total user demand, respectively, to gain a better understanding of these time- and
+spatial-dependent properties.  We then design a queuing-based approach which 
+considers the current channel capacity to serve the dynamic user demand in an energy-efficient 
+manner according to differing qualities of service.  Specifically, we perform extensive
+spectral measurements in the Dallas-Fort Worth metroplex at various times of the day
+to compose a diurnal pattern of spectral activity across WiFi and white space channels.
+Moreover, we examine mobility patterns from 60k users who are actively using our Android 
+application and uploading signal strength measurements to a measurement repository. The
+measurement-driven spectral activity and load are used by our Greedy Server-side Replacement (GSR)
+algorithm which seeks to minimize the power consumption of the offloaded unlicensed network,
+considering the implications of varying qualities of service requirements.
 
 % Paper contributions
 In particular, the main contributions of our work are as follows:
 \begin{itemize}
-\item We perform 24 hours in-field measurements in neighborhoods, campus, downtown business building, and urban business buildings. Through the in-field measurements, we estimate the achieved channel capacity of these typical area in north Texas.
-\item We leverage the user mobility footprint through in-filed Android based WiEye measurements of Dallas area on weekdays. Through the measurements analysis, we tell the user distribution in multiple types of areas across 24 hours on weekday. 
-\item We formulate the heterogeneous wireless network as a queuing system. Based on previous queuing theory works, we analyze the resource allocation of the system under the constraint of waiting time. Based on the analysis, we propose a Greedy Server-side Replace (GSR) algorithm to allocate the channel resource to minimize the power consumption.
-\item We perform measurement-driven numerical simulations to analyze various scenarios of channel resource and users distribution. Our results shows that the white space bands reduce the power consumption in sparse areas by up to 512.55\% in weekdays. 
-The power consumption reduction is up to 150.89\% over WiFi only configuration with three white space channels under relaxed waiting time constraint.
-%Fixme added on May 2nd
-The average power consumption will reduce by 19.61\% on average while the peak power consumption will increase 2.57\% in high user fluctuation area than an equal offerloaded low user fluctuation area.
-The numerical simulation in measurements based dense areas shows the average power consumption reduction over 24 hours by 24.57\%, 46.27\%, and 67.40\% over WiFi only network. 
+\item We perform 24 hours of spectral measurements in diverse parts of the Dallas-Fort Worth metroplex, including neighborhoods, campus, a downtown business district, and an urban business district. Through these in-field measurements, we estimate the achieved channel capacity of these representative areas of a metropolitan region.
+\item We leverage our Android-based application, WiEye, to consider the mobility patterns of users in Dallas and three other large Texas cities: Houston, San Antonio, and Austin.  Through these crowdsourced measurements, we anticipate the diurnal traffic demand dynamics of large metropolitan areas.
+\item Driven by these in-field and crowdsourced measurements, we formulate the wireless network structure as a queuing system, considering cellular, WiFi, and white space channels. We analyze the potential capacity and resulting energy consumption of the offloaded unlicensed network based on differing waiting times. Based on the analysis, we propose a Greedy Server-side Replacement (GSR) algorithm to allocate the unlicensed channel resources to minimize the power consumption.
+\item We perform measurement-driven numerical simulations to analyze various scenarios of unlicensed channel resources and users distributions. Our results show that the use of white space bands can reduce the power consumption in sparse areas by up to 512.55\%. 
+We further show that the power savings can be up to 150.89\% over a WiFi-only configuration with the use of white space channels and relaxed but realistic waiting time constraints.
+Even in dense urban areas we show the average power consumption for a 24-hour period can be reduced by up to 67.40\% over a WiFi-only network. 
+Lastly, our analysis shows that while we achieve an average power consumption reduction of 19.61\% over all the areas considered, we have analyzed a wide-range of realistic scenarios and established a framework to understand where the highest levels of gains will occur.
+%fixme: I need to understand this point
+%find an average power consumption reduction of 19.61\% while the peak power consumption will increase 2.57\% in high user fluctuation area than an equal 
+%offerloaded low user fluctuation area.
 \end{itemize}
 
-%The rest of the paper is organized as follows. We describe the system and formulate the problem in~\ref{sec:problemformulation}.
-%Then, we present the queuing theory analysis and the Greedy Server-side Replace algorithm also in~\ref{sec:problemformulation}.
-%The measurements and measurement-driven numerical simulation is discussed in~\ref{sec:experiment}. Finally, we 
-%conclude our article in~\ref{sec:conclusion}. 
+The rest of the paper is organized as follows. We describe the system and formulate the problem in Section~\ref{sec:problemformulation}. Then, we present the queuing theory analysis and the Greedy Server-side Replacement (GSR) algorithm in Section~\ref{sec:problemformulation}. We then discuss our spectral analysis and crowdsourced measurements in Section~\ref{sec:measurements} and resulting measurement-driven analysis of GSR in Section~\ref{sec:experiment}. We discuss related work in Section~\ref{sec:related} and conclude in Section~\ref{sec:conclusion}.

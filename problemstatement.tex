@@ -1,18 +1,19 @@
 \subsection{Challenges And Analysis}
 \label{subsec:challenge}
-% Connect the model to the system,
+% Connect the model to the system, 
 % Claim the variables which we made to do the optimize
 % Explain the way to find mu in the words
 % Challenges sum
+% Groupmeeting feedback
 Prior works formulate similar multi-channel systems as $M/M/m$ queuing systems for 
-analysis~\cite{bodas2012low}. However, the heterogeneous WhiteCell system is not 
+analysis~\cite{bodas2012low}. However, the WhiteCell system is not 
 able to be formulated as such due to the non-equal assignment of channel capacity 
 to each cell across white space and WiFi channels.
 Thus we first analyze the queuing system and apply previous work in $M/M/m$ queuing 
 theory to approach a solution for the system.
 
 % introduce the queue system
-In the heterogeneous WhiteCell system, the users of a cell have access to both the WiFi 
+In the WhiteCell system, the users of a cell have access to both the WiFi 
 channel assigned for the cell and the larger propagation white space channels for service. 
 The white space channels cover multiple cells in the system, thus the channel capacity of white space channels need to be split into these cells 
 to server the users.
@@ -72,7 +73,7 @@ Section~\ref{sec:experiment}.
 
 % analysis
 With these measurements, we further analyze the channel capacity allocation for 
-the WhiteCell heterogeneous system. 
+the WhiteCell system. 
 We first investigate the channel capacity allocation sub problem in a single cell.
 The users of the the same WiFi cell are in a heterogeneous queuing system with server of 
 WiFi channels and white space channels with service rates $\mu_1,\mu_2,...\mu_{(F_w+1)}$.
@@ -161,18 +162,16 @@ consumption.
 $\rho=\frac{\lambda}{m\mu^*}$ is the traffic density, and $c(m,\rho)$ is the Erlang-C 
 formula~\cite{gelenbe1998introduction}.
 
-
-
-In the heterogeneous WhiteCell system, the less radios that are in operation, the less power consumption occurs 
+In the WhiteCell system, the less radios that are in operation, the less power consumption occurs 
 in the system as shown in Eq.~\ref{eq:radio}. 
-The basic idea of power saving for this heterogeneous system is to replace the WiFi radios via 
+The basic idea of power saving for this WhiteCell system is to replace the WiFi radios via 
 white space channel capacity. To implement the division of the white space capacity, we propose a 
-Greedy Server-side Replace(GSR) algorithm to minimize power consumption in the system 
+Greedy Server-side Replacement(GSR) algorithm to minimize power consumption in the system 
 as shown in Algorithm~\ref{algorithm:gsr}. 
 
 \begin{algorithm}[t]
 \small
-\caption{Greedy Server-side Replace}
+\caption{Greedy Server-side Replacement}
 \label{algorithm:gsr}
 \begin{algorithmic}[1]
 \REQUIRE  ~~\\
